@@ -2,24 +2,29 @@
 # Installs StrongLoop and Git
 FROM node:10.15.0-jessie
 
+RUN apt-get update && \
+      apt-get -y install sudo
 
-# Installing Git
 
-RUN mkdir data
-RUN mkdir /data/git-tmp
-WORKDIR /data/git-tmp
-RUN apt-get update
+RUN adduser --disabled-password --gecos '' docker
+RUN adduser docker sudo
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+USER docker
+
+
+RUN sudo mkdir data
 RUN git --version
 
 
 # Create App Directory and CD into it
-RUN mkdir /data/app
+RUN sudo mkdir /data/app
 WORKDIR /data/app
 
 # Clone Master and Install dependencies
-RUN git clone https://github.com/LordOfTheRains/adapt-backend.git
+RUN sudo git clone https://github.com/LordOfTheRains/adapt-backend.git
 
 # Run App
 WORKDIR /data/app/adapt-backend
-
-ENTRYPOINT ["docker-entrypoint.sh"]
+RUN sudo chmod 777 docker-entrypoint.sh
+ENTRYPOINT ["./docker-entrypoint.sh"]

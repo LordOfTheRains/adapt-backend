@@ -9,12 +9,7 @@ RUN mkdir data
 RUN mkdir /data/git-tmp
 WORKDIR /data/git-tmp
 RUN apt-get update
-RUN		sudo apt-get install build-essential libssl-dev libcurl4-gnutls-dev libexpat1-dev gettext unzip && \
-RUN		wget https://github.com/git/git/archive/v1.9.4.tar.gz && \
-RUN		cd git-1.9.4 && \
-RUN		make prefix=/usr/local all && \
-RUN		sudo make prefix=/usr/local instal && \
-RUN		rm /data/git-tmp -Rvf
+RUN git --version
 
 
 # Create App Directory and CD into it
@@ -26,4 +21,5 @@ RUN git clone https://github.com/LordOfTheRains/adapt-backend.git
 
 # Run App
 WORKDIR /data/app/adapt-backend
+
 ENTRYPOINT ["docker-entrypoint.sh"]

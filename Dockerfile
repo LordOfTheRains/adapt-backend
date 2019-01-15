@@ -15,6 +15,8 @@ USER docker
 
 RUN sudo mkdir data
 RUN git --version
+RUN sudo npm install -g loopback-cli
+RUN sudo npm install loopback-connector-mysql --save
 
 
 # Create App Directory and CD into it

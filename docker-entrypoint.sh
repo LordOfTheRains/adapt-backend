@@ -2,6 +2,6 @@
 
 echo "changing into app directory"
 cd adapt
-npm install
+sudo npm install
 echo "running adapt on local server"
 node .

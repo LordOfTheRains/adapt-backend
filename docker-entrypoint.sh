@@ -1,6 +1,5 @@
 #!/bin/bash
 
-git pull
 echo "changing into app directory"
 cd adapt
 npm install

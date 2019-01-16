@@ -1,9 +1,7 @@
 #!/bin/bash
 
-echo "checking Node version"
-node --version
-npm ls loopback
-echo "end of Docker entrypoint script"
-
-#Installing Loopback
-
+echo "changing into app directory"
+cd adapt
+npm install
+echo "running adapt on local server"
+node .

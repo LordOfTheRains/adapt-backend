@@ -1,0 +1,29 @@
+{
+  "name": "adapt-backend",
+  "version": "1.0.0",
+  "description": "ADAPT mobile app backend",
+  "main": "index.js",
+  "dependencies": {
+    "loopback-cli": "^5.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LordOfTheRains/adapt-backend.git"
+  },
+  "keywords": [
+    "accessible",
+    "and",
+    "affordable",
+    "housing"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LordOfTheRains/adapt-backend/issues"
+  },
+  "homepage": "https://github.com/LordOfTheRains/adapt-backend#readme"
+}

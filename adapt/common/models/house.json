@@ -1,0 +1,1 @@
+{"name":"house","plural":"houses","base":"Model","idInjection":true,"options":{"validateUpsert":true},"properties":{"name":{"type":"string","required":true}},"validations":[],"relations":{},"acls":[],"methods":{}}

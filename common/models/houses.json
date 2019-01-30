@@ -1,0 +1,1 @@
+{"name":"Houses","base":"PersistedModel","idInjection":false,"options":{"validateUpsert":true},"properties":{"HouseID":{"type":"number","id":1,"generated":1},"Name":{"type":"string","required":true},"id":{"type":"number","required":true}},"validations":[],"relations":{},"acls":[],"methods":{}}

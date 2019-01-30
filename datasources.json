@@ -1,0 +1,1 @@
+{"db":{"name":"db","connector":"memory"},"mysqlD":{"host":"127.0.0.1","port":3306,"url":"","database":"adapttesting","password":"databasetesting","name":"mysqlD","user":"root","connector":"mysql"}}

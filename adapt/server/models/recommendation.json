@@ -1,7 +1,6 @@
 {
-  "name": "house",
-  "plural": "houses",
-  "base": "Model",
+  "name": "recommendation",
+  "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
@@ -10,6 +9,16 @@
     "name": {
       "type": "string",
       "required": true
+    },
+    "cost": {
+      "type": "number"
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "string"
     }
   },
   "validations": [],

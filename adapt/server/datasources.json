@@ -4,7 +4,7 @@
     "connector": "mysql",
 	"username":"root",
 	"password":"password",
-	"host":"0.0.0.0",
+	"host":"172.19.0.22",
 	"port":3306
   }
 }

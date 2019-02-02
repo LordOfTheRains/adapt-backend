@@ -1,1 +1,94 @@
-{"_meta":{"sources":["loopback/common/models","loopback/server/models","../common/models","./models"],"mixins":["loopback/common/mixins","loopback/server/mixins","../common/mixins","./mixins"]},"User":{"dataSource":"mysqlD"},"AccessToken":{"dataSource":"mysqlD","public":false},"ACL":{"dataSource":"mysqlD","public":false},"RoleMapping":{"dataSource":"mysqlD","public":false,"options":{"strictObjectIDCoercion":true}},"Role":{"dataSource":"mysqlD","public":false},"Residents":{"dataSource":"mysqlD","public":true},"PhysicalConcerns":{"dataSource":"mysqlD","public":true},"ResidentConcerns":{"dataSource":"mysqlD","public":true},"Houses":{"dataSource":"mysqlD","public":true},"ResidentHouses":{"dataSource":"mysqlD","public":true},"Rooms":{"dataSource":"mysqlD","public":true},"Tips":{"dataSource":"mysqlD","public":true},"Recommendations":{"dataSource":"mysqlD","public":true},"SavedHouseRecommendations":{"dataSource":"mysqlD","public":true},"SavedHouseTips":{"dataSource":"mysqlD","public":true},"ResidentRoomConcerns":{"dataSource":"mysqlD","public":true},"Website":{"dataSource":"mysqlD","public":true},"RecommendationWebSites":{"dataSource":"mysqlD","public":true},"TipsWebsites":{"dataSource":"mysqlD","public":true}}
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "adaptDB"
+  },
+  "AccessToken": {
+    "dataSource": "adaptDB",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "adaptDB",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "adaptDB",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "adaptDB",
+    "public": false
+  },
+  "Residents": {
+    "dataSource": "adaptDB",
+    "public": true
+  },
+  "PhysicalConcerns": {
+    "dataSource": "adaptDB",
+    "public": true
+  },
+  "ResidentConcerns": {
+    "dataSource": "adaptDB",
+    "public": true
+  },
+  "Houses": {
+    "dataSource": "adaptDB",
+    "public": true
+  },
+  "ResidentHouses": {
+    "dataSource": "adaptDB",
+    "public": true
+  },
+  "Rooms": {
+    "dataSource": "adaptDB",
+    "public": true
+  },
+  "Tips": {
+    "dataSource": "adaptDB",
+    "public": true
+  },
+  "Recommendations": {
+    "dataSource": "adaptDB",
+    "public": true
+  },
+  "SavedHouseRecommendations": {
+    "dataSource": "adaptDB",
+    "public": true
+  },
+  "SavedHouseTips": {
+    "dataSource": "adaptDB",
+    "public": true
+  },
+  "ResidentRoomConcerns": {
+    "dataSource": "adaptDB",
+    "public": true
+  },
+  "Website": {
+    "dataSource": "adaptDB",
+    "public": true
+  },
+  "RecommendationWebSites": {
+    "dataSource": "adaptDB",
+    "public": true
+  },
+  "TipsWebsites": {
+    "dataSource": "adaptDB",
+    "public": true
+  }
+}

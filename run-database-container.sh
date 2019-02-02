@@ -12,9 +12,11 @@ docker network create --subnet=172.19.0.0/16 adapt-darknet
 #the adapt-darknet must be created first, if not run the folllowing to create it
 #docker network create --subnet=172.19.0.0/16 adapt-darknet
 docker rm -f adapt-mysql
-docker run --network=adapt-darknet --ip 172.19.0.22 -p 3306:3306 --name=adapt-mysql \
+docker run --network=adapt-darknet --ip 172.19.0.22 --name=adapt-mysql \
 -v $PWD/../datadir:/var/lib/mysql \
 -v $PWD/my.cnf:/etc/my.cnf \
+-v $PWD/mysql.log:/var/log/mysql/mysql.log \
+-v $PWD/mysql_error.log:/var/log/mysql/mysql_error.log \
 -e MYSQL_ROOT_PASSWORD=password \
 -d mysql/mysql-server:5.7
 #-v $PWD/my.cnf:/etc/my.cnf \

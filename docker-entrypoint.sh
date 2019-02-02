@@ -2,7 +2,7 @@
 
 echo "fetching latest backend code from github"
 git fetch
-git pull https://github.com/LordOfTheRains/adapt-backend.git
+git pull
 echo "changing into app directory"
 cd adapt
 sudo npm install

@@ -6,8 +6,8 @@
 	  "name": "adaptDB",
 		"database":"adapt-db",
 	  "connector": "mysql",
-		"username":"root",
-		"password":"password",
+		"username":"adaptAdmin",
+		"password":"password2",
     "connectTimeout": 30000
 	}
 }

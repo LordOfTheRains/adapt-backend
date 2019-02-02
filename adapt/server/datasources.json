@@ -23,10 +23,10 @@
 	"user":"rkv0004",
 	"connector":"mysql"
 	},
-"adapt-db":
+"adaptDB":
 	{
-  "name": "adapt-db",
-  "connector": "mysql",
+  	"name": "adaptDB",
+  	"connector": "mysql",
 	"database":"adapt",
 	"username":"root",
 	"password":"password",

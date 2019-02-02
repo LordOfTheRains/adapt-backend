@@ -6,8 +6,7 @@
 		"url":"",
 	  "name": "db",
 	  "connector": "mysql",
-		"database":"adapt",
 		"username":"root",
-		"password":"password",
+		"password":"password"
 	}
 }

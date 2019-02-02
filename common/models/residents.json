@@ -1,1 +1,0 @@
-{"name":"Residents","base":"PersistedModel","idInjection":false,"options":{"validateUpsert":true},"properties":{"ResID":{"type":"number","id":1,"generated":1},"Name":{"type":"string","required":true},"Income":{"type":"number","required":true},"Location":{"type":"string","required":true}},"validations":[],"relations":{},"acls":[],"methods":{}}

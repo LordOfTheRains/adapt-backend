@@ -1,1 +1,0 @@
-{"name":"SavedHouseTips","base":"PersistedModel","idInjection":false,"options":{"validateUpsert":true},"properties":{"HouseID":{"type":"number","id":1,"required":true},"TipID":{"type":"number","id":2,"required":true}},"validations":[],"relations":{"getTipsInfo":{"type":"belongsTo","model":"Tips","foreignKey":"","options":{"nestRemoting":true}}},"acls":[],"methods":{}}

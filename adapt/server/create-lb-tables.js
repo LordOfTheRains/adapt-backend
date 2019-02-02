@@ -7,6 +7,7 @@ var lbTables = ['User', 'AccessToken', 'ACL',
   'ResidentRoomConcerns', 'Website', "RecommendationWebSites",
   'TipsWebsites'];
 ds.automigrate(lbTables, function(er) {
+  console.log('Loopback tables [' - lbTables - '] migrate completed for', ds.adapter.name);
   if (er) throw er;
   console.log('Loopback tables [' - lbTables - '] created in ', ds.adapter.name);
   ds.disconnect();

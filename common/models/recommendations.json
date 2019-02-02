@@ -1,1 +1,0 @@
-{"name":"Recommendations","base":"PersistedModel","idInjection":false,"options":{"validateUpsert":true},"properties":{"RecID":{"type":"number","id":1,"generated":true},"Type":{"type":"string","required":true},"PhyID":{"type":"number","required":true},"Description":{"type":"string","required":true}},"validations":[],"relations":{},"acls":[],"methods":{}}

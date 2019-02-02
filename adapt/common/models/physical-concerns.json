@@ -1,0 +1,1 @@
+{"name":"PhysicalConcerns","base":"PersistedModel","idInjection":false,"options":{"validateUpsert":true},"properties":{"PhyID":{"type":"number","id":1,"generated":1},"Name":{"type":"string","required":true},"Type":{"type":"string","required":true}},"validations":[],"relations":{},"acls":[],"methods":{}}

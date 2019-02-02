@@ -1,5 +1,5 @@
 var server = require('./server');
-var ds = server.dataSources.adapt-db;//change the last part to whatever datasource connector name you are using
+var ds = server.dataSources.adaptDB;//change the last part to whatever datasource connector name you are using
 var lbTables = ['User', 'AccessToken', 'ACL',
   'RoleMapping', 'Role','Residents', 'Recommendations',
   'Tips', 'Houses', 'PhysicalConcerns', 'Rooms','SavedHouseTips',

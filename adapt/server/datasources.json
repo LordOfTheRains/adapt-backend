@@ -2,11 +2,12 @@
 	"adaptDB":
 		{
 		"host":"172.19.0.22",
-		"port":3306,
-		"url":"",
+		"port":33060,
 	  "name": "adaptDB",
+		"database":"adapt-db",
 	  "connector": "mysql",
 		"username":"root",
-		"password":"password"
+		"password":"password",
+    "connectTimeout": 30000
 	}
 }

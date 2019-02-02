@@ -1,1 +1,48 @@
-{"name":"Residents","base":"PersistedModel","idInjection":false,"options":{"validateUpsert":true},"properties":{"ResID":{"type":"number","id":1,"generated":1},"Name":{"type":"string","required":true},"Income":{"type":"number","required":true},"Location":{"type":"string","required":true},"Gender":{"type":"string"},"Age":{"type":"number","required":true}},"validations":[],"relations":{"getResidentPhysicalConcerns":{"type":"hasMany","model":"PhysicalConcerns","foreignKey":"ResID","options":{"nestRemoting":true},"through":"ResidentConcerns"}},"acls":[],"methods":{}}
+{
+  "name": "Residents",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "ResID": {
+      "type": "number",
+      "id": 1,
+      "generated": 1
+    },
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Income": {
+      "type": "number",
+      "required": true
+    },
+    "Location": {
+      "type": "string",
+      "required": true
+    },
+    "Gender": {
+      "type": "string"
+    },
+    "Age": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "getResidentPhysicalConcerns": {
+      "type": "hasMany",
+      "model": "PhysicalConcerns",
+      "foreignKey": "ResID",
+      "options": {
+        "nestRemoting": true
+      },
+      "through": "ResidentConcerns"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

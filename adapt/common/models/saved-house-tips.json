@@ -1,1 +1,30 @@
-{"name":"SavedHouseTips","base":"PersistedModel","idInjection":false,"options":{"validateUpsert":true},"properties":{},"validations":[],"relations":{"houses":{"type":"belongsTo","model":"Houses","foreignKey":"HouseID","options":{"nestRemoting":true}},"tips":{"type":"belongsTo","model":"Tips","foreignKey":"TipID","options":{"nestRemoting":true}}},"acls":[],"methods":{}}
+{
+  "name": "SavedHouseTips",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "houses": {
+      "type": "belongsTo",
+      "model": "Houses",
+      "foreignKey": "HouseID",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "tips": {
+      "type": "belongsTo",
+      "model": "Tips",
+      "foreignKey": "TipID",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

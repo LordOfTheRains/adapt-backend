@@ -1,1 +1,30 @@
-{"name":"TipsWebsites","base":"PersistedModel","idInjection":true,"options":{"validateUpsert":true},"properties":{},"validations":[],"relations":{"tips":{"type":"belongsTo","model":"Tips","foreignKey":"TipID","options":{"nestRemoting":true}},"website":{"type":"belongsTo","model":"Website","foreignKey":"WebID","options":{"nestRemoting":true}}},"acls":[],"methods":{}}
+{
+  "name": "TipsWebsites",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "tips": {
+      "type": "belongsTo",
+      "model": "Tips",
+      "foreignKey": "TipID",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "website": {
+      "type": "belongsTo",
+      "model": "Website",
+      "foreignKey": "WebID",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

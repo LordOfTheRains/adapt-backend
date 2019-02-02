@@ -1,1 +1,30 @@
-{"name":"Rooms","base":"PersistedModel","idInjection":false,"options":{"validateUpsert":true},"properties":{"RoomID":{"type":"number","id":1,"generated":1},"Name":{"type":"string","required":true},"ImagePlaceHolder":{"type":"string"},"Type":{"type":"string","required":true}},"validations":[],"relations":{},"acls":[],"methods":{}}
+{
+  "name": "Rooms",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "RoomID": {
+      "type": "number",
+      "id": 1,
+      "generated": 1
+    },
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "ImagePlaceHolder": {
+      "type": "string"
+    },
+    "Type": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

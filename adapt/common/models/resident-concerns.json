@@ -1,1 +1,30 @@
-{"name":"ResidentConcerns","base":"PersistedModel","idInjection":false,"options":{"validateUpsert":true},"properties":{},"validations":[],"relations":{"residents":{"type":"belongsTo","model":"Residents","foreignKey":"ResID","options":{"nestRemoting":true}},"physicalConcerns":{"type":"belongsTo","model":"PhysicalConcerns","foreignKey":"PhyID","options":{"nestRemoting":true}}},"acls":[],"methods":{}}
+{
+  "name": "ResidentConcerns",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "residents": {
+      "type": "belongsTo",
+      "model": "Residents",
+      "foreignKey": "ResID",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "physicalConcerns": {
+      "type": "belongsTo",
+      "model": "PhysicalConcerns",
+      "foreignKey": "PhyID",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

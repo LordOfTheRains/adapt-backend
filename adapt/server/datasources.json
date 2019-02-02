@@ -1,1 +1,36 @@
-{"db":{"name":"db","connector":"memory"},"mysqlD":{"host":"127.0.0.1","port":3306,"url":"","database":"adapttesting","password":"databasetesting","name":"mysqlD","user":"root","connector":"mysql"},"mysql":{"host":"acadmysql.duc.auburn.edu","port":3306,"url":"","database":"rkv0004db","password":"database!QAZ2","name":"mysql","user":"rkv0004","connector":"mysql"}}
+{"db":
+	{
+	"name":"db",
+	"connector":"memory"
+	},
+"mysqlD":
+	{
+	"host":"127.0.0.1",
+	"port":3306,
+	"url":"",
+	"database":"adapttesting",
+	"password":"databasetesting",
+	"name":"mysqlD",
+	"user":"root","connector":"mysql"},
+"mysql":
+	{
+	"host":"acadmysql.duc.auburn.edu",
+	"port":3306,
+	"url":"",
+	"database":"rkv0004db",
+	"password":"database!QAZ2",
+	"name":"mysql",
+	"user":"rkv0004",
+	"connector":"mysql"
+	},
+"adapt-db":
+	{
+  "name": "adapt-db",
+  "connector": "mysql",
+	"database":"adapt",
+	"username":"root",
+	"password":"password",
+	"host":"172.19.0.22",
+	"port":3306
+  }
+}

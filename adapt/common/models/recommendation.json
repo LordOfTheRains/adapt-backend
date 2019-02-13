@@ -1,0 +1,46 @@
+{
+  "name": "Recommendation",
+  "plural": "Recommendations",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "isProductRec": {
+      "type": "boolean",
+      "default": false
+    },
+    "cost": {
+      "type": "number"
+    },
+    "applicableGenders": {
+      "type": ["number"],
+      "required": true
+    },
+    "applicableRoomTypes": {
+      "type": ["number"],
+      "required": true
+    },
+    "type": {
+      "type": "number",
+      "required": true
+    },
+    "websites": {
+      "type": [
+        "object"
+      ]
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

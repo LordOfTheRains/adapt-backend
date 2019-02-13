@@ -1,6 +1,6 @@
 {
-  "name": "House",
-  "plural": "Houses",
+  "name": "Resident",
+  "plural": "Residents",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -9,6 +9,22 @@
   "properties": {
     "name": {
       "type": "string",
+      "required": true
+    },
+    "age": {
+      "type": "number",
+      "required": true
+    },
+    "gender": {
+      "type": "number",
+      "required": true
+    },
+    "location": {
+      "type": "string",
+      "required": true
+    },
+    "income": {
+      "type": "number",
       "required": true
     }
   },
@@ -20,17 +36,9 @@
       "foreignKey": "userId",
       "required": true
     },
-    "residents": {
+    "houses": {
       "type": "hasAndBelongsToMany",
-      "model": "Resident"
-    },
-    "savedRecommendations": {
-      "type": "hasAndBelongsToMany",
-      "model": "Recommendation"
-    },
-    "savedTips": {
-      "type": "hasAndBelongsToMany",
-      "model": "Tip"
+      "model": "House"
     }
   },
   "acls": [],

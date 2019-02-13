@@ -1,43 +1,46 @@
 {
-  "name": "Recommendations",
+  "name": "Residents",
   "base": "PersistedModel",
   "idInjection": false,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "RecID": {
+    "ResID": {
       "type": "number",
       "id": 1,
-      "generated": true
+      "generated": 1
     },
-    "Type": {
+    "Name": {
       "type": "string",
       "required": true
     },
-    "PhyID": {
+    "Income": {
       "type": "number",
       "required": true
     },
-    "Description": {
+    "Location": {
       "type": "string",
       "required": true
     },
-    "Cost": {
+    "Gender": {
+      "type": "string"
+    },
+    "Age": {
       "type": "number",
       "required": true
     }
   },
   "validations": [],
   "relations": {
-    "getRecommendationWebsites": {
+    "getResidentPhysicalConcerns": {
       "type": "hasMany",
-      "model": "Website",
-      "foreignKey": "RecID",
+      "model": "PhysicalConcern",
+      "foreignKey": "ResID",
       "options": {
         "nestRemoting": true
       },
-      "through": "RecommendationWebSites"
+      "through": "ResidentConcerns"
     }
   },
   "acls": [],

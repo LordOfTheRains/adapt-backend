@@ -27,6 +27,10 @@
       "type": "hasAndBelongsToMany",
       "model": "Resident"
     },
+    "rooms": {
+      "type": "hasMany",
+      "model": "Room"
+    },
     "savedRecommendations": {
       "type": "hasAndBelongsToMany",
       "model": "Recommendation"

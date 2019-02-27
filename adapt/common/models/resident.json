@@ -38,7 +38,8 @@
     },
     "houses": {
       "type": "hasAndBelongsToMany",
-      "model": "House"
+      "model": "House",
+      "foreignKey": "houseId"
     }
   },
   "acls": [],

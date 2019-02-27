@@ -29,6 +29,18 @@
       "type": ["number"],
       "required": true
     },
+    "applicableIncomes": {
+      "type": ["number"],
+      "required": true
+    },
+    "applicableAges": {
+      "type": ["number"],
+      "required": true
+    },
+    "applicableLocations": {
+      "type": ["number"],
+      "required": true
+    },
     "type": {
       "type": "number",
       "required": true

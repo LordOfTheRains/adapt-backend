@@ -1,0 +1,32 @@
+<style>         
+</style>
+<h2>Current Tips</h2>
+<form action="http://localhost:3000/#!/tipform">
+    <input type="submit" value="Add New Tip" class="btn btn-primary" />
+</form>
+<div ng-controller = 'myCtrl' ng-init= "getTips()">
+        <table>
+            <tr>
+            <th>TipID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Website Name</th>
+            <th>Website URL</th>
+            </tr>
+            <tr ng-repeat = "tip in tipsList">
+                <td>{{tip.TipID}}</td>
+                <td>{{tip.Name}}</td>
+                <td>{{tip.Description}}</td>
+                <td>
+                    <li ng-repeat = "website in tip.Websites">
+                        {{website.WebsiteName}}
+                    </li>
+                </td>
+                <td>
+                    <li ng-repeat = "website in tip.Websites">
+                        {{website.WebURL}}
+                    </li>
+                </td>
+            </tr>
+        </table>           
+</div>

@@ -1,16 +1,78 @@
 <!DOCTYPE html>
 <html>
+<style>
+    ul.directory{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+                
+    li{
+        float: left;
+    }
+                
+    li a{
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+                
+    li.directory a:hover:not(.active) {
+        background-color: #111;
+    }
+                
+    .active {
+        background-color: #4CAF50;
+    }
+    table {
+        width:100%;
+    }
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 15px;
+        text-align: left;
+    }
+    table#t01 tr:nth-child(even) {
+        background-color: #eee;
+    }
+    table#t01 tr:nth-child(odd) {
+        background-color: #fff;
+    }
+    table#t01 th {
+        background-color: black;
+        color: white;   
+    }
+</style>
 <head>
 <meta charset="UTF-8">
-<title>Title of the document</title>
+<title>ADAPT App</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 </head>
-<script src="login.js"></script>
-<body>
-Content of the document.....
-</body>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<body ng-app = "myApp">
 
-</html><head><title>LoopBack</title></head>
-<body>
-    <h1>LoopBack Rocks!</h1>
-    <p>Hello World... </p>
-</body>
+    <div class ='container'>
+        <h1><center>ADAPT App</center></h1>
+        <h2><center>(PLACEHOLDER TEXT)</center></h2>
+    </div>
+    <nav>
+        <ul class= "directory">
+            <li><a href="#!login">Login</a></li>
+            <li><a href="#!tips">Tips Management</a></li>
+            <li><a href="#!recommendations">Recommendations Management</a></li>
+        </ul>
+    </nav>
+    <div ng-view></div>
+    <script src="websiteResources/myApp.js"></script>
+    </body>
+</html>
+

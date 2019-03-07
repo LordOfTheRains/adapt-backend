@@ -1,49 +1,20 @@
 {
   "name": "Tips",
-  "base": "PersistedModel",
-  "idInjection": false,
-  "options": {
-    "validateUpsert": true
-  },
-  "properties": {
-    "TipID": {
-      "type": "number",
-      "id": 1,
-      "generated": 1
-    },
-    "Type": {
-      "type": "string",
-      "required": true
-    },
-    "Description": {
-      "type": "string",
-      "required": true
-    },
-    "Location": {
-      "type": "string",
-      "required": true
-    },
-    "Gender": {
-      "type": "string",
-      "required": true
-    },
-    "Age": {
-      "type": "number",
-      "required": true
-    }
-  },
-  "validations": [],
-  "relations": {
-    "getTipWebSites": {
-      "type": "hasMany",
-      "model": "Website",
-      "foreignKey": "TipID",
-      "options": {
-        "nestRemoting": true
-      },
-      "through": "TipsWebsites"
-    }
-  },
-  "acls": [],
-  "methods": {}
+    "base":"PersistedModel",
+    "idInjection":false,
+    "options":{"validateUpsert":true},
+    "properties":{"TipID":{"type":"string","required":false,"id":1, "generated":true},
+    "Name":{"type":"string"},
+    "Description":{"type":"string"},
+    "Websites":{
+        "type": [
+          {
+            "type": {
+              "WebURL":"string",
+              "WebsiteName": "string"
+            }
+          }
+        ]
+      }
+      },"validations":[],"relations":{},"acls":[],"methods":{}
 }

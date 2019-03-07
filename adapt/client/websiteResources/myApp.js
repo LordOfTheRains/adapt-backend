@@ -26,9 +26,9 @@ app.controller('myCtrl', ['$scope', '$http', '$location', function($scope, $http
     $scope.login = function() {
       $http({
         method: 'Get',
-        url: 'http://localhost:3001/api/testings',
+        url: 'http://localhost:3000/api/Tips',
       }).then(function successCallback(response) {
-        alert(JSON.stringify(response.data));
+        alert("Form submitted and request sent.");
       }, function errorCallback(response) {
         alert("Error. while trying to login, Try Again!");
       });
@@ -38,7 +38,7 @@ app.controller('myCtrl', ['$scope', '$http', '$location', function($scope, $http
         $scope.tipsList = [];
         $http({
             method: 'Get',
-            url: 'http://localhost:3001/api/Tips',
+            url: 'http://localhost:3000/api/Tips',
           }).then(function successCallback(response) {
             $scope.tipsList = (response.data);
           }, function errorCallback(response) {
@@ -58,8 +58,9 @@ app.controller('myCtrl', ['$scope', '$http', '$location', function($scope, $http
           Description : $scope.newTip.Description,
           Websites: $scope.newTipWebsites
         };
-        var res = $http.post('http://localhost:3001/api/Tips', dataObj);
+        var res = $http.post('http://localhost:3000/api/Tips', dataObj);
         res.success(function(data, status, headers, config) {
+          alert("New tip added to the database.");
           $location.url("http://localhost:3000/#!/tips");
         });
         res.error(function(data, status, headers, config) {

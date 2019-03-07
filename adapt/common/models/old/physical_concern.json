@@ -1,23 +1,23 @@
 {
-  "name": "PhysicalConcerns",
+  "name": "PhysicalConcern",
+  "plural": "PhysicalConcerns",
   "base": "PersistedModel",
-  "idInjection": false,
+  "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "PhyID": {
-      "type": "number",
-      "id": 1,
-      "generated": 1
-    },
-    "Name": {
+    "name": {
       "type": "string",
       "required": true
     },
-    "Type": {
+    "type": {
       "type": "string",
       "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": false
     }
   },
   "validations": [],

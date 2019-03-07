@@ -1,0 +1,53 @@
+{
+  "name": "Tip",
+  "plural": "Tips",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "number",
+      "required": true
+    },
+    "applicableIncomes": {
+      "type": [
+        "object"
+      ]
+    },
+    "applicableLocations": {
+      "type": [
+        "string"
+      ]
+    },
+    "applicableGenders": {
+      "type": [
+        "number"
+      ]
+    },
+    "maxAge": {
+      "type": "number"
+    },
+    "minAge": {
+      "type": "number"
+    },
+    "websites": {
+      "type": [
+        "object"
+      ]
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

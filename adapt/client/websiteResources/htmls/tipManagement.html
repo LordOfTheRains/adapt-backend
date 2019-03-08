@@ -1,32 +1,46 @@
 <style>         
 </style>
-<h2>Current Tips</h2>
-<form action="http://localhost:3000/#!/tipform">
-    <input type="submit" value="Add New Tip" class="btn btn-primary" />
-</form>
+
+
 <div ng-controller = 'myCtrl' ng-init= "getTips()">
-        <table>
-            <tr>
-            <th>TipID</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Website Name</th>
-            <th>Website URL</th>
-            </tr>
-            <tr ng-repeat = "tip in tipsList">
-                <td>{{tip.TipID}}</td>
-                <td>{{tip.Name}}</td>
-                <td>{{tip.Description}}</td>
-                <td>
-                    <li ng-repeat = "website in tip.Websites">
-                        {{website.WebsiteName}}
-                    </li>
-                </td>
-                <td>
-                    <li ng-repeat = "website in tip.Websites">
-                        {{website.WebURL}}
-                    </li>
-                </td>
-            </tr>
-        </table>           
+        <div class="container">
+            <!-- <div class="row justify-content-md-left">
+                <a href="#!/tipform" class="btn btn-success" role="button">Link Button</a>
+            </div> -->
+            <h2 class="text-center" >ADAPT Tips
+                    <a  style="float: right;" href="#!/tipform" class="btn btn-success" role="button">Add New Tip </a>
+            </h2>
+            <div class="row justify-content-md-center">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Websites</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat = "tip in tipsList  | orderBy : '-id'">
+                            <td>{{tip.id}}</td>
+                            <td>{{tip.name}}</td>
+                            <td>{{tip.description}}</td>
+                            <td>
+                                <table>
+                                    <tr ng-repeat = "website in tip.websites">
+                                        <td> {{website.label}} : {{website.url}}  </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-success">Edit</button>
+                                <button type="button" class="btn btn-warning">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>           
+            </div>
+        </div>
+       
 </div>

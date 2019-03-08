@@ -21,12 +21,13 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     });
 }]);
 
+const serverURL = "http://165.227.3.148:8080/";
 //controls the login page screen
 app.controller('myCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
     $scope.login = function() {
       $http({
         method: 'Get',
-        url: 'http://localhost:3000/api/Tips',
+        url: serverURL + 'api/Tips',
       }).then(function successCallback(response) {
         alert("Form submitted and request sent.");
       }, function errorCallback(response) {
@@ -38,7 +39,7 @@ app.controller('myCtrl', ['$scope', '$http', '$location', function($scope, $http
         $scope.tipsList = [];
         $http({
             method: 'Get',
-            url: 'http://localhost:3000/api/Tips',
+            url: serverURL + 'api/Tips',
           }).then(function successCallback(response) {
             $scope.tipsList = (response.data);
           }, function errorCallback(response) {
@@ -46,26 +47,26 @@ app.controller('myCtrl', ['$scope', '$http', '$location', function($scope, $http
           });
     };
 
+    $scope.newTipWebsites = new Array(2);
     $scope.addNewTip = function() {
 
-        $scope.newTipWebsites = [
-          {'WebsiteName': 'WebsiteName1', 'WebURL': 'WebURL1'},
-          {'WebsiteName': "WebsiteName2", 'WebURL': 'WebURL2'}
-        ];
-
+        // $scope.newTipWebsites = [
+        //   {'WebsiteName': 'WebsiteName1', 'WebURL': 'WebURL1'},
+        //   {'WebsiteName': "WebsiteName2", 'WebURL': 'WebURL2'}
+        // ];
         var dataObj = {
-          Name : $scope.newTip.Name,
-          Description : $scope.newTip.Description,
-          Websites: $scope.newTipWebsites
+          name : $scope.newTip.Name,
+          description : $scope.newTip.Description,
+          websites: $scope.newTipWebsites,
+          type:0
         };
-        var res = $http.post('http://localhost:3000/api/Tips', dataObj);
-        res.success(function(data, status, headers, config) {
+        var res = $http.post(serverURL + 'api/Tips', dataObj);
+        res.then(function(data, status, headers, config) {
           alert("New tip added to the database.");
-          $location.url("http://localhost:3000/#!/tips");
-        });
-        res.error(function(data, status, headers, config) {
+          $location.url(serverURL + '#!/tips');
+        }, function(data, status, headers, config) {
           alert( "failure message: " + JSON.stringify({data: data}));
-        });		
+        });
         // Making the fields empty
         //
         $scope.newTip.Name = '';

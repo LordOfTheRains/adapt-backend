@@ -18,8 +18,8 @@
     },
     "physicalConcerns": {
       "type": "belongsTo",
-      "model": "PhysicalConcerns",
-      "foreignKey": "PhyID",
+      "model": "PhysicalConcern",
+      "foreignKey": "physicalConcernId",
       "options": {
         "nestRemoting": true
       }

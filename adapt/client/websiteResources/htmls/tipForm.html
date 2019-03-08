@@ -16,13 +16,19 @@
                 <div class="form-group row">
                         <label>Website 1</label>
                         <div class ='input-group'>
-                            <input type = "text"  class="form-control" placeholder = 'Enter website name' ng-model = "newTip.websiteName" required>
-                            <input type = "text"  class="form-control" placeholder = 'Enter website url' ng-model = "newTip.websiteURL" required>
+                            <input type = "text"  class="form-control" placeholder = 'Enter website name' ng-model = "newTipWebsites[0]['label']" required>
+                            <input type = "text"  class="form-control" placeholder = 'Enter website url' ng-model = "newTipWebsites[0]['url']" required>
+                        </div>
+                        <br>
+
+                        <label>Website 2</label>
+                        <div class ='input-group'>
+                            <input type = "text"  class="form-control" placeholder = 'Enter website name' ng-model = "newTipWebsites[1]['label']" required>
+                            <input type = "text"  class="form-control" placeholder = 'Enter website url' ng-model = "newTipWebsites[1]['url']" required>
                         </div>
                         <br>
                 </div>
-        </form>
-        {{newTip.websiteName}}
+            </form>
         <form action="http://localhost:3000/#!/tips" id= "cancel">
         </form>
         <div>

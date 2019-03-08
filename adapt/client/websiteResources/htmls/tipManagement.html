@@ -1,0 +1,46 @@
+<style>         
+</style>
+
+
+<div ng-controller = 'myCtrl' ng-init= "getTips()">
+        <div class="container">
+            <!-- <div class="row justify-content-md-left">
+                <a href="#!/tipform" class="btn btn-success" role="button">Link Button</a>
+            </div> -->
+            <h2 class="text-center" >ADAPT Tips
+                    <a  style="float: right;" href="#!/tipform" class="btn btn-success" role="button">Add New Tip </a>
+            </h2>
+            <div class="row justify-content-md-center">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Websites</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat = "tip in tipsList  | orderBy : '-id'">
+                            <td>{{tip.id}}</td>
+                            <td>{{tip.name}}</td>
+                            <td>{{tip.description}}</td>
+                            <td>
+                                <table>
+                                    <tr ng-repeat = "website in tip.websites">
+                                        <td> {{website.label}} : {{website.url}}  </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-success">Edit</button>
+                                <button type="button" class="btn btn-warning">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>           
+            </div>
+        </div>
+       
+</div>

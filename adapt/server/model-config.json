@@ -78,5 +78,9 @@
   "Tip": {
     "dataSource": "adaptDB",
     "public": true
+  },
+  "Image": {
+    "dataSource": "imagesFileSystem",
+    "public": true
   }
 }

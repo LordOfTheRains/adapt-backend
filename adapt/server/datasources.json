@@ -8,5 +8,11 @@
     "name": "adaptDB",
     "connector": "mysql",
     "connectTimeout": 30000
+  },
+  "imagesFileSystem": {
+    "name": "imagesFileSystem",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "./server/storage/"
   }
 }

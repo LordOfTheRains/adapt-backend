@@ -15,6 +15,10 @@
       "type": "string",
       "required": true
     },
+    "imageURLs": {
+      "type": ["string"],
+      "required": false
+    },
     "type": {
       "type": "number",
       "required": true
@@ -42,7 +46,7 @@
     },
     "websites": {
       "type": [
-        "object"
+        "string"
       ]
     }
   },

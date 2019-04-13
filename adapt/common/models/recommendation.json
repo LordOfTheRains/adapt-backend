@@ -14,7 +14,7 @@
     "description": {
       "type": "string"
     },
-    "imageURLs": {
+    "imageURL": {
       "type": "string",
       "required": true
     },

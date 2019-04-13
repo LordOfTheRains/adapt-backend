@@ -40,7 +40,7 @@
     "minAge": {
       "type": "number"
     },
-    "websites": {
+    "website": {
       "type":"string"
     }
   },

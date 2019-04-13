@@ -24,12 +24,12 @@
     },
     "applicableIncomes": {
       "type": [
-        "object"
+        "number"
       ]
     },
     "applicableLocations": {
       "type": [
-        "string"
+        "number"
       ]
     },
     "applicableGenders": {

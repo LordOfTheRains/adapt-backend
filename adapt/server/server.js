@@ -1,10 +1,17 @@
 'use strict';
-
+const path = require('path');
 var loopback = require('loopback');
 var boot = require('loopback-boot');
 
 var app = module.exports = loopback();
 
+// var ds = loopback.createDataSource({
+//   connector: require('loopback-component-storage'),
+//   provider: 'filesystem',
+//   root: path.join(__dirname, 'storage')
+// });
+
+// var imagesContainer = ds.createModel('images');
 app.start = function() {
   // start the web server
   return app.listen(function() {

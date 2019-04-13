@@ -14,31 +14,41 @@
     "description": {
       "type": "string"
     },
-    "isProductRec": {
-      "type": "boolean",
-      "default": false
+    "imageURLs": {
+      "type": "string",
+      "required": true
     },
     "cost": {
       "type": "number"
     },
     "applicableGenders": {
-      "type": ["number"],
+      "type": [
+        "number"
+      ],
       "required": true
     },
     "applicableRoomTypes": {
-      "type": ["number"],
+      "type": [
+        "number"
+      ],
       "required": true
     },
     "applicableIncomes": {
-      "type": ["number"],
+      "type": [
+        "number"
+      ],
       "required": true
     },
     "applicableAges": {
-      "type": ["number"],
+      "type": [
+        "number"
+      ],
       "required": true
     },
     "applicableLocations": {
-      "type": ["number"],
+      "type": [
+        "number"
+      ],
       "required": true
     },
     "type": {

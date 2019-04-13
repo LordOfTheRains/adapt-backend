@@ -20,27 +20,12 @@ module.exports = function(Room) {
           var thisRoom = room.toJSON();
           app.models.House.getFilterableCategories(thisRoom.houseId, function(err, categories){
             var Recommendation = app.models.Recommendation;
-            let filter={
-                        "where": {
-                          "applicableGenders": {"inq": categories.genders}
-                        }
-                      }
             console.log(categories.genders);
-            // Recommendation.find({"where":
-            //   "applicableGenders": {"inq": [0]}}
-            // }, function(err, recs){
-            //
-            //   console.log(recs);
-            //   cb(null,recs);
-            // })
 
 
-            Recommendation.find({where: {applicableGenders: {inq: [1]}}}, function(err,recs){
-              var filtered = LBFilter(recs, filter);
-              console.log(recs);
-              console.log(filter);
-              console.log(filtered);
-              cb(null,filtered);
+            Recommendation.find(function(err,recs){
+              
+              cb(null,recs);
             });
           })
         }else{

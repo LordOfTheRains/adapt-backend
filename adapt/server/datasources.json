@@ -13,6 +13,6 @@
     "name": "imagesFileSystem",
     "connector": "loopback-component-storage",
     "provider": "filesystem",
-    "root": "./server/storage/"
+    "root": "./server"
   }
 }

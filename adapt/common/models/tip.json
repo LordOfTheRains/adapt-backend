@@ -15,10 +15,6 @@
       "type": "string",
       "required": true
     },
-    "imageURLs": {
-      "type": ["string"],
-      "required": false
-    },
     "type": {
       "type": "number",
       "required": true
@@ -45,9 +41,7 @@
       "type": "number"
     },
     "websites": {
-      "type": [
-        "string"
-      ]
+      "type":"string"
     }
   },
   "validations": [],

@@ -15,12 +15,8 @@
       "type": "string"
     },
     "imageURLs": {
-      "type": ["string"],
+      "type": "string",
       "required": true
-    },
-    "isProductRec": {
-      "type": "boolean",
-      "default": false
     },
     "cost": {
       "type": "number"
@@ -61,7 +57,7 @@
     },
     "websites": {
       "type": [
-        "string"
+        "object"
       ]
     }
   },

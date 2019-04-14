@@ -19,14 +19,17 @@
       "type": "number",
       "required": true
     },
+    "subtype": {
+      "type": "number"
+    },
     "applicableIncomes": {
       "type": [
-        "object"
+        "number"
       ]
     },
     "applicableLocations": {
       "type": [
-        "string"
+        "number"
       ]
     },
     "applicableGenders": {

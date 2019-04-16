@@ -1,0 +1,84 @@
+             <!-- Modal Header -->
+             <div class="modal-header">
+                <h4 class="modal-title">Update Recommendation</h4>
+                <button type="button" class="close" ng-click="closeModal()">&times;</button>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+                    <div class="container">
+                                <form ng-submit="addNewRecommendation()" id = "recform">
+                                    <div class="form-group row">
+                                        <label>Recommendation Name</label>
+                                        <div class = 'input-group'>
+                                            <input type = "text" class="form-control" placeholder = 'Enter recommendation name' ng-model = "newName" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label>Description</label>
+                                        <div class ='input-group'>
+                                            <input type = "text"  class="form-control" placeholder = 'Enter recommendation description' ng-model = "newDescription" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label>Image URL</label>
+                                        <div class ='input-group'>
+                                            <input type = "text"  class="form-control" placeholder = 'Enter image URL' ng-model = "newImageURL">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label>Cost</label>
+                                        <div class ='input-group'>
+                                            <input type = "text"  class="form-control" placeholder = 'Enter cost' ng-model = "newCost">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label>Type</label>
+                                        <div class ='input-group'>
+                                            <input type = "text"  class="form-control" placeholder = 'Enter type' ng-model = "newType">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                            <label>Locations (if applicable) </label>
+                                            <div ng-dropdown-multiselect="" options="stateList" selected-model="selectedStates" extra-settings="dropDownSettings"></div>
+                                    </div>
+                                    <div class="form-group row">
+                                            <label>Income Bracket (if applicable) </label>
+                                            <div ng-dropdown-multiselect="1" options="incomeBracketList" selected-model="selectedIncomeBrackets" extra-settings="dropDownSettings"></div>
+                                    </div>
+                                    <div class="form-group row">
+                                            <label>Gender (if applicable) </label>
+                                            <div ng-dropdown-multiselect="2" options="genderList" selected-model="selectedGenders" extra-settings="dropDownSettings"></div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label>Room Types (if applicable) </label>
+                                        <div ng-dropdown-multiselect="3" options="roomTypeList" selected-model="selectedRoomTypes" extra-settings="dropDownSettings"></div>
+                                </div>
+                                <div class="form-group row">
+                                        <label>Ages (if applicable) </label>
+                                        <div ng-dropdown-multiselect="4" options="ageList" selected-model="selectedAges" extra-settings="dropDownSettings"></div>
+                                </div>
+                                    <div class="form-group row">
+                                            <label>Website 1</label>
+                                            <div class ='input-group'>
+                                                <input type = "text"  class="form-control" placeholder = 'Enter website name' ng-model = "newRecWebsites[0]['label']" required>
+                                                <input type = "text"  class="form-control" placeholder = 'Enter website url' ng-model = "newRecWebsites[0]['url']" required>
+                                            </div>
+                                            <br>
+                    
+                                            <label>Website 2</label>
+                                            <div class ='input-group'>
+                                                <input type = "text"  class="form-control" placeholder = 'Enter website name' ng-model = "newRecWebsites[1]['label']">
+                                                <input type = "text"  class="form-control" placeholder = 'Enter website url' ng-model = "newRecWebsites[1]['url']">
+                                            </div>
+                                            <br>
+                                    </div>
+                                </form>
+                    </div>
+            </div>
+            
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <input type= "submit" value="Add Recommendation" class="btn btn-primary" form='recform'>
+                <button type="button" class="btn btn-danger" ng-click="closeModal()">Close</button>
+            </div>

@@ -11,6 +11,7 @@
     "posttest": "npm run lint"
   },
   "dependencies": {
+    "angularjs-dropdown-multiselect": "^2.0.0-beta.10",
     "compression": "^1.0.3",
     "cors": "^2.5.2",
     "helmet": "^3.10.0",

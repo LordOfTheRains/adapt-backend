@@ -1,0 +1,82 @@
+             <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Add New Tip</h4>
+                <button type="button" class="close" ng-click="closeModal()">&times;</button>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+                    <div class="container">
+                                <form ng-submit="addNewTip()" id = "tipform">
+                                    <div class="form-group row">
+                                        <label>Tip Name</label>
+                                        <div class = 'input-group'>
+                                            <input type = "text" class="form-control" placeholder = 'Enter tip name' ng-model = "newTip.name" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label>Description</label>
+                                        <div class ='input-group'>
+                                            <input type = "text"  class="form-control" placeholder = 'Enter tip description' ng-model = "newTip.description" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label>Minimum Age (if applicable)</label>
+                                        <div class ='input-group'>
+                                            <input type = "text"  class="form-control" placeholder = 'Enter minimum age' ng-model = "newTip.minAge">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label>Maximum Age (if applicable)</label>
+                                        <div class ='input-group'>
+                                            <input type = "text"  class="form-control" placeholder = 'Enter maximum age' ng-model = "newTip.maxAge">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label>Type</label>
+                                        <div class ='input-group'>
+                                            <input type = "text"  class="form-control" placeholder = 'Enter type' ng-model = "newTip.type">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label>Subtype</label>
+                                        <div class ='input-group'>
+                                            <input type = "text"  class="form-control" placeholder = 'Enter subtype' ng-model = "newTip.subtype">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                            <label>Locations (if applicable) </label>
+                                            <div ng-dropdown-multiselect="" options="stateList" selected-model="selectedStates" extra-settings="dropDownSettings"></div>
+                                    </div>
+                                    <div class="form-group row">
+                                            <label>Income Bracket (if applicable) </label>
+                                            <div ng-dropdown-multiselect="1" options="incomeBracketList" selected-model="selectedIncomeBrackets" extra-settings="dropDownSettings"></div>
+                                    </div>
+                                    <div class="form-group row">
+                                            <label>Gender (if applicable) </label>
+                                            <div ng-dropdown-multiselect="2" options="genderList" selected-model="selectedGenders" extra-settings="dropDownSettings"></div>
+                                    </div>
+                                    <div class="form-group row">
+                                            <label>Website 1</label>
+                                            <div class ='input-group'>
+                                                <input type = "text"  class="form-control" placeholder = 'Enter website name' ng-model = "newTipWebsites[0]['label']" required>
+                                                <input type = "text"  class="form-control" placeholder = 'Enter website url' ng-model = "newTipWebsites[0]['url']" required>
+                                            </div>
+                                            <br>
+                    
+                                            <label>Website 2</label>
+                                            <div class ='input-group'>
+                                                <input type = "text"  class="form-control" placeholder = 'Enter website name' ng-model = "newTipWebsites[1]['label']">
+                                                <input type = "text"  class="form-control" placeholder = 'Enter website url' ng-model = "newTipWebsites[1]['url']">
+                                            </div>
+                                            <br>
+                                    </div>
+                                </form>
+                    </div>
+            </div>
+            
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <input type= "submit" value="Add Tip" class="btn btn-primary" form='tipform'>
+                <button type="button" class="btn btn-danger" ng-click="closeModal()">Close</button>
+            </div>

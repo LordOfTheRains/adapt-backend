@@ -1,1 +1,43 @@
-I literally am going to be the exact same thing as tips but for the recommendations.
+
+<div ng-init= "pageInit()">
+    <div class="container">
+        <!-- <div class="row justify-content-md-left">
+            <a href="#!/tipform" class="btn btn-success" role="button">Link Button</a>
+        </div> -->
+        <h2 class="text-center" >ADAPT Recommendations
+                <button  type = "button" style="float: right;" class="btn btn-success" ng-click="openNewRecommendationForm()">Add New Recommendation </button>
+        </h2>
+        <div class="row justify-content-md-center">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Websites</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat = "rec in recommendationsList  | orderBy : '-id'">
+                        <td>{{rec.id}}</td>
+                        <td>{{rec.name}}</td>
+                        <td>{{rec.description}}</td>
+                        <td>
+                            <table>
+                                <tr ng-repeat = "website in rec.websites">
+                                    <td> {{website.label}} : {{website.url}}  </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <button  type = "button" class="btn btn-success" ng-click ="openUpdateRecommendationForm(rec)">Update</button>
+                            <button type="button" class="btn btn-warning" ng-click = "deleteRecommendation(rec)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>           
+        </div>
+        
+    </div>      
+</div>

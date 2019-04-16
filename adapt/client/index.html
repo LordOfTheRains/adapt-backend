@@ -55,24 +55,35 @@
 <title>ADAPT App</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 </head>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.0/lodash.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-dropdown-multiselect/2.0.0-beta.10/angularjs-dropdown-multiselect.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>
 <body ng-app = "myApp">
 
     <div class ='container'>
         <h1><center>ADAPT App</center></h1>
-        <h2><center>(PLACEHOLDER TEXT)</center></h2>
+        <h2><center>Welcome {{email}}</center></h2>
     </div>
     <nav>
         <ul class= "directory">
-            <li><a href="#!login">Login</a></li>
-            <li><a href="#!tips">Tips Management</a></li>
-            <li><a href="#!recommendations">Recommendations Management</a></li>
+            <li><a ng-show ="!isLoggedIn" href="#!">Login</a></li>
+            <li><a ng-show = "isLoggedIn" href="#!tips">Tips Management</a></li>
+            <li><a ng-show = "isLoggedIn" href="#!recommendations">Recommendations Management</a></li>
+            <li><a ng-show = "isLoggedIn">Logout</a><li>
         </ul>
     </nav>
     <div ng-view></div>
     <script src="websiteResources/myApp.js"></script>
+    <script src="websiteResources/controllers/loginCtrl.js"></script>
+    <script src="websiteResources/controllers/tipCtrl.js"></script>
+    <script src="websiteResources/controllers/recommendationCtrl.js"></script>
+    <script src="websiteResources/controllers/tipFormCtrl.js"></script>
+    <script src="websiteResources/controllers/recommendationFormCtrl.js"></script>
     </body>
 </html>
 

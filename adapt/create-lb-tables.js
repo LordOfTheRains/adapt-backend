@@ -1,14 +1,11 @@
 var server = require('./server/server');
 var ds = server.dataSources.adaptDB;//change the last part to whatever datasource connector name you are using
 
-
 //turn this true if you want docker restart to remove the database schema and refill it with dummy data
-const RESET_DATABASE = false;
+const shoudlResetDatabase = false;
+const shouldCreateDummyData = true;
 
-
-
-
-if (RESET_DATABASE) {
+if (shoudlResetDatabase) {
   var app = server;
   var Room = app.models.Room;
   var House = app.models.House;
@@ -21,7 +18,6 @@ if (RESET_DATABASE) {
   //automigrate recreates the whole database.
   //autoupdte detects differences.
   
-  const shouldCreateDummyData = true;
   ds.automigrate().then(function(er) {
     console.log('Loopback tables [' - lbTables - '] migrate completed for', ds.adapter.name);
     if (er) throw er;
@@ -84,6 +80,7 @@ if (RESET_DATABASE) {
       });
     });
   });
+}else{
+  console.log("not changing database...");
+  process.exit(-1);
 }
-
-

@@ -20,11 +20,15 @@
       "required": true
     },
     "location": {
-      "type": "string",
+      "type": "number",
       "required": true
     },
     "income": {
       "type": "number",
+      "required": true
+    },
+    "concerns": {
+      "type": ["number"],
       "required": true
     }
   },

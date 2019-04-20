@@ -51,6 +51,12 @@
       ],
       "required": true
     },
+    "applicableConcerns": {
+      "type": [
+        "number"
+      ],
+      "required": true
+    },
     "type": {
       "type": "number",
       "required": true

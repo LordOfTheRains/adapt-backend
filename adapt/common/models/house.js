@@ -33,33 +33,38 @@ module.exports = function(House) {
         console.log(categories);
   
         Recommendation.find(function(err,recs){
-          var filtered = recs;
-          filtered = filtered.filter(rec => {
+          var filtered = recs.filter(rec => {
             return rec.applicableRoomTypes.includes(roomType);
           })
-          filtered = filtered.filter(rec => {
-            const intersection = categories.incomes.filter(income=>rec.applicableIncomes.includes(income));
-            return intersection.length > 0;
-          })
-
-          filtered = filtered.filter(rec => {
-            const intersection = categories.ages.filter(age=>rec.applicableAges.includes(age));
-            return intersection.length > 0;
-          })
-
-          filtered = filtered.filter(rec => {
-            const intersection = categories.genders.filter(gender=>rec.applicableGenders.includes(gender));
-            return intersection.length > 0;
-          })
-          filtered = filtered.filter(rec => {
-            const intersection = categories.locations.filter(state=>rec.applicableLocations.includes(state));
-            return intersection.length > 0;
-          })
-          filtered = filtered.filter(rec => {
-            const intersection = categories.concerns.filter(concern=>rec.applicableConcerns.includes(concern));
-            return intersection.length > 0;
-          })
-          cb(null,filtered);
+          console.log(categories);
+          if (categories == null) {
+            console.log("empty house");
+            cb(null,filtered);
+          }else{
+            filtered = filtered.filter(rec => {
+              const intersection = categories.incomes.filter(income=>rec.applicableIncomes.includes(income));
+              return intersection.length > 0;
+            })
+  
+            filtered = filtered.filter(rec => {
+              const intersection = categories.ages.filter(age=>rec.applicableAges.includes(age));
+              return intersection.length > 0;
+            })
+  
+            filtered = filtered.filter(rec => {
+              const intersection = categories.genders.filter(gender=>rec.applicableGenders.includes(gender));
+              return intersection.length > 0;
+            })
+            filtered = filtered.filter(rec => {
+              const intersection = categories.locations.filter(state=>rec.applicableLocations.includes(state));
+              return intersection.length > 0;
+            })
+            filtered = filtered.filter(rec => {
+              const intersection = categories.concerns.filter(concern=>rec.applicableConcerns.includes(concern));
+              return intersection.length > 0;
+            })
+            cb(null,filtered);
+          }
         });
       }else{
         console.log(err);
@@ -82,7 +87,11 @@ module.exports = function(House) {
     if (house == null){
       return categories;
     }
-    house.toJSON().residents.forEach(function(resident){
+    let residents =  house.toJSON().residents;
+    if (residents.length == 0){
+      return null;
+    }
+    residents.forEach(function(resident){
       categories.incomes.push(resident.income);
       categories.ages.push(resident.age);
       categories.genders.push(resident.gender);
@@ -93,7 +102,7 @@ module.exports = function(House) {
     categories.ages = uniq(categories.ages);
     categories.genders = uniq(categories.genders);
     categories.locations = uniq(categories.locations);
-    //categories.concerns = uniq(categories.concerns);
+    categories.concerns = uniq(categories.concerns);
 
     return categories;
 

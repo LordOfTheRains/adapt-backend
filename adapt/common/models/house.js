@@ -24,54 +24,67 @@ module.exports = function(House) {
   House.getRecommendations = function(houseId, roomType,cb) {
     //https://loopback.io/doc/en/lb3/Querying-data.html
     var app = House.app;
-
-    House.findById(houseId,{include: {relation: 'residents'}}, function(err, house){
-      if (err == null && house != null) {
-      
-        const categories = House.getFilterableCategories(house);
-        var Recommendation = app.models.Recommendation;
-        console.log(categories);
-  
-        Recommendation.find(function(err,recs){
-          var filtered = recs.filter(rec => {
-            return rec.applicableRoomTypes.includes(roomType);
-          })
+    var Recommendation = app.models.Recommendation;
+    if (houseId == 0) { //no house selected
+      Recommendation.find(function(err,recs){
+        var filtered = recs.filter(rec => {
+          return rec.applicableRoomTypes.includes(roomType);
+        })
+        cb(null,filtered);
+      });
+    }else{
+      House.findById(houseId,{include: {relation: 'residents'}}, function(err, house){
+        if (err == null && house != null) {
+          const categories = House.getFilterableCategories(house);
           console.log(categories);
-          if (categories == null) {
-            console.log("empty house");
-            cb(null,filtered);
-          }else{
-            filtered = filtered.filter(rec => {
-              const intersection = categories.incomes.filter(income=>rec.applicableIncomes.includes(income));
-              return intersection.length > 0;
+          Recommendation.find(function(err,recs){
+            var filtered = recs.filter(rec => {
+              return rec.applicableRoomTypes.includes(roomType);
             })
-  
-            filtered = filtered.filter(rec => {
-              const intersection = categories.ages.filter(age=>rec.applicableAges.includes(age));
-              return intersection.length > 0;
-            })
-  
-            filtered = filtered.filter(rec => {
-              const intersection = categories.genders.filter(gender=>rec.applicableGenders.includes(gender));
-              return intersection.length > 0;
-            })
-            filtered = filtered.filter(rec => {
-              const intersection = categories.locations.filter(state=>rec.applicableLocations.includes(state));
-              return intersection.length > 0;
-            })
-            filtered = filtered.filter(rec => {
-              const intersection = categories.concerns.filter(concern=>rec.applicableConcerns.includes(concern));
-              return intersection.length > 0;
-            })
-            cb(null,filtered);
-          }
-        });
-      }else{
-        console.log(err);
-        cb(err,[]);
-      }
-    });
-
+            console.log(categories);
+            if (categories == null) {
+              console.log("empty house");
+              cb(null,filtered);
+            }else{
+              if (categories.incomes.length > 0) {
+                filtered = filtered.filter(rec => {
+                  const intersection = categories.incomes.filter(income=>rec.applicableIncomes.includes(income));
+                  return intersection.length > 0;
+                })
+              }
+              if (categories.ages.length > 0) {
+                filtered = filtered.filter(rec => {
+                  const intersection = categories.ages.filter(age=>rec.applicableAges.includes(age));
+                  return intersection.length > 0;
+                })
+              }
+              if (categories.genders.length > 0) {
+                filtered = filtered.filter(rec => {
+                  const intersection = categories.genders.filter(gender=>rec.applicableGenders.includes(gender));
+                  return intersection.length > 0;
+                })
+              }
+              if (categories.locations.length > 0) {
+                filtered = filtered.filter(rec => {
+                  const intersection = categories.locations.filter(state=>rec.applicableLocations.includes(state));
+                  return intersection.length > 0;
+                })
+              }
+              if (categories.concerns.length > 0) {
+                filtered = filtered.filter(rec => {
+                  const intersection = categories.concerns.filter(concern=>rec.applicableConcerns.includes(concern));
+                  return intersection.length > 0;
+                })
+              }
+              cb(null,filtered);
+            }
+          });
+        }else{
+          console.log(err);
+          cb(err,[]);
+        }
+      });
+    }
   }
 
 

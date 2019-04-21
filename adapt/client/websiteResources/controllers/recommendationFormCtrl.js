@@ -11,6 +11,9 @@ app.controller('recommendationFormCtrl', function($scope, $http, $route, $modalI
   $scope.selectedAges = [];
   $scope.selectedType = [];
   $scope.selectedConcerns = [];
+  $scope.selectedCost = [];
+
+  $scope.costsList = [{id: 1, label: "Low"}, {id: 2, label: "Medium"}, {id: 3, label: "High"}];
   $scope.roomTypeList = [{id: 1, label: "Outside The Home"}, {id: 2, label: "Entrance"}, {id: 3, label: "Travel Space"}, {id: 4, label: "Kitchen"}, {id: 5, label: "Bedroom"}, {id: 6, label: "Storage"}, {id: 7, label: "Laundry"}, {id: 8, label: "General"}];
   $scope.concernList = [{id: 1, label: "Wheelchair"}, {id: 2, label: "Blindness"}, {id: 3, label: "Speech Impairment"}];
   $scope.ageList = [{id: 1, label: "40-45"}, {id: 2, label: "45-50"}, {id: 3, label: "50-60"}, {id: 4, label: "60+"}];
@@ -57,7 +60,7 @@ app.controller('recommendationFormCtrl', function($scope, $http, $route, $modalI
         name: $scope.newName,
         description: $scope.newDescription,
         websites: $scope.newRecWebsites,
-        cost: $scope.newCost,
+        cost: getIntFromDropDown($scope.selectedCost[0]),
         imageURL: recommendationImageURL,
         type: getIntFromDropDown($scope.selectedType[0]),
         applicableAges: getIntArrayFromDropDown($scope.selectedAges),
@@ -89,7 +92,7 @@ app.controller('recommendationFormCtrl', function($scope, $http, $route, $modalI
       name: $scope.updatedName,
       description: $scope.updatedDescription,
       type: getIntFromDropDown($scope.updatedSelectedType[0]),
-      cost: parseInt($scope.updatedCost),
+      cost: getIntFromDropDown($scope.updatedSelectedCost[0]),
       imageURL: $scope.updatedImageURL,
       applicableAges: getIntArrayFromDropDown($scope.updatedSelectedAges),
       applicableRoomTypes: getIntArrayFromDropDown($scope.updatedSelectedRoomTypes),
@@ -121,7 +124,6 @@ app.controller('recommendationFormCtrl', function($scope, $http, $route, $modalI
     $scope.updatedName = recommendation.name;
     $scope.updatedDescription = recommendation.description;
     $scope.updatedRecWebsites = recommendation.websites;
-    $scope.updatedCost = recommendation.cost;
     $scope.updatedImageURL = recommendation.imageURL;
     $scope.updatedSelectedStates = [];
     $scope.updatedSelectedIncomeBrackets = [];
@@ -130,7 +132,8 @@ app.controller('recommendationFormCtrl', function($scope, $http, $route, $modalI
     $scope.updatedSelectedRoomTypes = [];
     $scope.updatedSelectedType = [];
     $scope.updatedSelectedConcerns = [];
-  
+    $scope.updatedSelectedCost = [];
+
     // arrays as stored inside the database
     var tempList1 = recommendation.applicableLocations;
     var tempList2 = recommendation.applicableIncomes;
@@ -140,7 +143,8 @@ app.controller('recommendationFormCtrl', function($scope, $http, $route, $modalI
     var tempList6 = recommendation.applicableConcerns;
   
     // database arrays are formatted to the dropdown menu format
-    $scope.updatedSelectedType = getType($scope.typeList, recommendation.type)
+    $scope.updatedSelectedCost = getInt($scope.costsList, recommendation.cost);
+    $scope.updatedSelectedType = getInt($scope.typeList, recommendation.type);
     $scope.updatedSelectedGenders = getDropDownArrayFromList($scope.genderList, tempList3);
     $scope.updatedSelectedIncomeBrackets = getDropDownArrayFromList($scope.incomeBracketList, tempList2);
     $scope.updatedSelectedStates = getDropDownArrayFromList($scope.stateList, tempList1);
@@ -180,7 +184,7 @@ function getIntFromDropDown(selectedItem) {
   return selectedItem.id - 1;
 }
 
-function getType(list, selectedValue) {
+function getInt(list, selectedValue) {
   var tempArray = [];
   list.forEach(function(item){
     if (item.id == (selectedValue + 1)) {

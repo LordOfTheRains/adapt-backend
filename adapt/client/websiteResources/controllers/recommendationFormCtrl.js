@@ -88,29 +88,72 @@ app.controller('recommendationFormCtrl', function($scope, $http, $route, $modalI
   // residing in the form at the time of submission
 
   $scope.updateRecommendation = function() {
-    var dataObj = {
-      name: $scope.updatedName,
-      description: $scope.updatedDescription,
-      type: getIntFromDropDown($scope.updatedSelectedType[0]),
-      cost: getIntFromDropDown($scope.updatedSelectedCost[0]),
-      imageURL: $scope.updatedImageURL,
-      applicableAges: getIntArrayFromDropDown($scope.updatedSelectedAges),
-      applicableRoomTypes: getIntArrayFromDropDown($scope.updatedSelectedRoomTypes),
-      applicableIncomes: getIntArrayFromDropDown($scope.updatedSelectedIncomeBrackets),
-      applicableGenders: getIntArrayFromDropDown($scope.updatedSelectedGenders),
-      applicableLocations: getIntArrayFromDropDown($scope.updatedSelectedStates),
-      applicableConcerns: getIntArrayFromDropDown($scope.updatedSelectedConcerns),
-      websites: $scope.updatedRecWebsites,
-      id: recommendation.id
-    };
-    var res = $http.put(serverURL + 'api/Recommendations/' + dataObj.id, dataObj);
-    res.then(function(data, status, headers, config) {
-      alert("Recommendation updated in the database.");
-      $scope.closeModal();
-      $route.reload();
-    }, function(data, status, headers, config) {
-      alert( "failure message: " + JSON.stringify({data: data}));
-    });
+    if ($scope.newImage == 'yes') {
+      var file = $scope.updatedMyFile;
+      var uploadUrl = serverURL + "api/images/storage/upload";
+
+      var fd = new FormData();
+      fd.append('file', file);
+      var res = $http.post(uploadUrl, fd, {
+         transformRequest: angular.identity,
+         headers: {'Content-Type': undefined}
+      });
+      res.then(function(data, status, headers, config) {
+      var recommendationImageURL = serverURL + "api/images/storage/download/" + file.name;
+
+      var dataObj = {
+        name: $scope.updatedName,
+        description: $scope.updatedDescription,
+        type: getIntFromDropDown($scope.updatedSelectedType[0]),
+        cost: getIntFromDropDown($scope.updatedSelectedCost[0]),
+        imageURL: recommendationImageURL,
+        applicableAges: getIntArrayFromDropDown($scope.updatedSelectedAges),
+        applicableRoomTypes: getIntArrayFromDropDown($scope.updatedSelectedRoomTypes),
+        applicableIncomes: getIntArrayFromDropDown($scope.updatedSelectedIncomeBrackets),
+        applicableGenders: getIntArrayFromDropDown($scope.updatedSelectedGenders),
+        applicableLocations: getIntArrayFromDropDown($scope.updatedSelectedStates),
+        applicableConcerns: getIntArrayFromDropDown($scope.updatedSelectedConcerns),
+        websites: $scope.updatedRecWebsites,
+        id: recommendation.id
+      };
+
+      var res = $http.put(serverURL + 'api/Recommendations/' + dataObj.id, dataObj);
+      res.then(function(data, status, headers, config) {
+        alert("Image and recommendation updated in the database.");
+        $scope.closeModal();
+        $route.reload();
+      }, function(data, status, headers, config) {
+        alert( "failure message: " + JSON.stringify({data: data}));
+      });
+      }, function(data, status, headers, config) {
+        alert("Image upload failed");
+      });
+    }
+    else {
+      var dataObj = {
+        name: $scope.updatedName,
+        description: $scope.updatedDescription,
+        type: getIntFromDropDown($scope.updatedSelectedType[0]),
+        cost: getIntFromDropDown($scope.updatedSelectedCost[0]),
+        imageURL: $scope.updatedImageURL,
+        applicableAges: getIntArrayFromDropDown($scope.updatedSelectedAges),
+        applicableRoomTypes: getIntArrayFromDropDown($scope.updatedSelectedRoomTypes),
+        applicableIncomes: getIntArrayFromDropDown($scope.updatedSelectedIncomeBrackets),
+        applicableGenders: getIntArrayFromDropDown($scope.updatedSelectedGenders),
+        applicableLocations: getIntArrayFromDropDown($scope.updatedSelectedStates),
+        applicableConcerns: getIntArrayFromDropDown($scope.updatedSelectedConcerns),
+        websites: $scope.updatedRecWebsites,
+        id: recommendation.id
+      };
+      var res = $http.put(serverURL + 'api/Recommendations/' + dataObj.id, dataObj);
+      res.then(function(data, status, headers, config) {
+        alert("Recommendation updated in the database.");
+        $scope.closeModal();
+        $route.reload();
+      }, function(data, status, headers, config) {
+        alert( "failure message: " + JSON.stringify({data: data}));
+      });
+    }
   };
   
   // Closes the modal without submitting the form
@@ -125,6 +168,7 @@ app.controller('recommendationFormCtrl', function($scope, $http, $route, $modalI
     $scope.updatedDescription = recommendation.description;
     $scope.updatedRecWebsites = recommendation.websites;
     $scope.updatedImageURL = recommendation.imageURL;
+    $scope.updatedImage = recommendation.imageURL.substring(recommendation.imageURL.lastIndexOf('/') + 1);
     $scope.updatedSelectedStates = [];
     $scope.updatedSelectedIncomeBrackets = [];
     $scope.updatedSelectedGenders = [];

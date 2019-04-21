@@ -26,12 +26,12 @@
                             <td>
                                 <table>
                                     <tr ng-repeat = "website in tip.websites">
-                                        <td> {{website.label}} : {{website.url}}  </td>
+                                        <td> {{website}}  </td>
                                     </tr>
                                 </table>
                             </td>
                             <td>
-                                <button  type = "button" class="btn btn-success" ng-click ="openUpdateForm(tip)">Update</button>
+                                <button  type = "button" class="btn btn-success" ng-click ="openUpdateTipForm(tip)">Update</button>
                                 <button type="button" class="btn btn-warning" ng-click = "deleteTip(tip)">Delete</button>
                             </td>
                         </tr>

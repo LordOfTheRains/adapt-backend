@@ -9,16 +9,24 @@
                     <div class="container">
                                 <form ng-submit="updateTip()" id = "updatetipform">
                                     <div class="form-group row">
-                                        <label>Tip Name</label>
+                                        <label>Tip Name (Required) </label>
                                         <div class = 'input-group'>
                                             <input type = "text" class="form-control" placeholder = 'Enter tip name' ng-model = "updatedName" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label>Description</label>
+                                        <label>Description (Required) </label>
                                         <div class ='input-group'>
                                             <input type = "text"  class="form-control" placeholder = 'Enter tip description' ng-model = "updatedDescription" required>
                                         </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label>Type (Required) </label>
+                                        <div ng-dropdown-multiselect="3" options="tipTypeList" selected-model="updatedSelectedType" extra-settings="singleSelectDropDown" required></div>
+                                    </div>
+                                    <div class="form-group row" ng-show = "updatedSelectedType[0].id == 3">
+                                        <label>Subtype </label>
+                                        <div ng-dropdown-multiselect="4" options="tipSubtypeList" selected-model="updatedSelectedSubtype" extra-settings="singleSelectDropDown"></div>
                                     </div>
                                     <div class="form-group row">
                                         <label>Minimum Age (if applicable)</label>
@@ -30,18 +38,6 @@
                                         <label>Maximum Age (if applicable)</label>
                                         <div class ='input-group'>
                                             <input type = "text"  class="form-control" placeholder = 'Enter maximum age' ng-model = "updatedMaxAge">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label>Type</label>
-                                        <div class ='input-group'>
-                                            <input type = "text"  class="form-control" placeholder = 'Enter type' ng-model = "updatedType">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label>Subtype</label>
-                                        <div class ='input-group'>
-                                            <input type = "text"  class="form-control" placeholder = 'Enter subtype' ng-model = "updatedSubtype">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -59,15 +55,13 @@
                                     <div class="form-group row">
                                             <label>Website 1</label>
                                             <div class ='input-group'>
-                                                <input type = "text"  class="form-control" placeholder = 'Enter website name' ng-model = "updatedTipWebsites[0]['label']" required>
-                                                <input type = "text"  class="form-control" placeholder = 'Enter website url' ng-model = "updatedTipWebsites[0]['url']" required>
+                                                <input type = "text"  class="form-control" placeholder = 'Enter website url' ng-model = "updatedTipWebsites[0]">
                                             </div>
                                             <br>
                     
                                             <label>Website 2</label>
                                             <div class ='input-group'>
-                                                <input type = "text"  class="form-control" placeholder = 'Enter website name' ng-model = "updatedTipWebsites[1]['label']">
-                                                <input type = "text"  class="form-control" placeholder = 'Enter website url' ng-model = "updatedTipWebsites[1]['url']">
+                                                <input type = "text"  class="form-control" placeholder = 'Enter website url' ng-model = "updatedTipWebsites[1]">
                                             </div>
                                             <br>
                                     </div>

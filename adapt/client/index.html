@@ -20,8 +20,26 @@
         padding: 14px 16px;
         text-decoration: none;
     }
+    li button{
+        background-color:  #333;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;;
+        border: none;
+        background: none;
+        text-decoration: none;
+    }
                 
     li.directory a:hover:not(.active) {
+        background-color: #111;
+    }
+                
+    .active {
+        background-color: #4CAF50;
+    }
+
+    li.directory button:hover:not(.active) {
         background-color: #111;
     }
                 
@@ -74,7 +92,7 @@
             <li><a ng-show ="!isLoggedIn" href="#!">Login</a></li>
             <li><a ng-show = "isLoggedIn" href="#!tips">Tips Management</a></li>
             <li><a ng-show = "isLoggedIn" href="#!recommendations">Recommendations Management</a></li>
-            <li><a ng-show = "isLoggedIn">Logout</a><li>
+            <li><button  ng-controller = "loginCtrl" ng-click = "logout()" type = "button" style="float: right;" ng-show="isLoggedIn">Logout</button></li>
         </ul>
     </nav>
     <div ng-view></div>

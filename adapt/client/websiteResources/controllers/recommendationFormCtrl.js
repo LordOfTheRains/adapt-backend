@@ -12,7 +12,7 @@ app.controller('recommendationFormCtrl', function($scope, $http, $route, $modalI
   $scope.selectedType = [];
   $scope.selectedConcerns = [];
   $scope.roomTypeList = [{id: 1, label: "Outside The Home"}, {id: 2, label: "Entrance"}, {id: 3, label: "Travel Space"}, {id: 4, label: "Kitchen"}, {id: 5, label: "Bedroom"}, {id: 6, label: "Storage"}, {id: 7, label: "Laundry"}, {id: 8, label: "General"}];
-  $scope.concernList = [{id: 1, label: "Wheelchair"}, {id: 2, label: "Blindness"}, {id: 3, label: "Speech Impairment"}, {id: 4, label: "Bathroom"}];
+  $scope.concernList = [{id: 1, label: "Wheelchair"}, {id: 2, label: "Blindness"}, {id: 3, label: "Speech Impairment"}];
   $scope.ageList = [{id: 1, label: "40-45"}, {id: 2, label: "45-50"}, {id: 3, label: "50-60"}, {id: 4, label: "60+"}];
   $scope.typeList = [{id: 1, label: "Safety"}, {id: 2, label: "Mobility"}, {id: 3, label: "Visibility"}];
   $scope.stateList = [  {id: 1, label: "Alabama"}, {id: 2, label: "Alaska"}, {id: 3, label: "Arizona"},

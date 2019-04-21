@@ -1,7 +1,7 @@
 // Defines the functions and variables (excluding $rootScope) that
 // the tip page has available to it.
 
-app.controller('tipCtrl', function($scope, $http, $window, $modal, $rootScope) {
+app.controller('tipCtrl', function($scope, $http, $route, $modal, $rootScope) {
 
   const serverURL = "http://165.227.3.148:8080/";
 
@@ -27,13 +27,13 @@ app.controller('tipCtrl', function($scope, $http, $window, $modal, $rootScope) {
     var res = $http.delete(serverURL + 'api/Tips/' + itemID);
     res.then(function(data, status, headers, config) {
       alert("Tip removed from the database.");
-      $window.location.reload();
+      $route.reload();
     }, function(data, status, headers, config) {
       alert( "failure message: " + JSON.stringify({data: data}));
     });
   };
   
-  $scope.openUpdateForm = function(item) {
+  $scope.openUpdateTipForm = function(item) {
     var modalInstance = $modal.open({
       templateUrl: './websiteResources/htmls/updateTipForm.html',
       controller: "tipFormCtrl",

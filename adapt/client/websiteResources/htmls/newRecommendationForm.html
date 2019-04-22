@@ -6,68 +6,68 @@
                 
                 <!-- Modal body -->
                 <div class="modal-body">
-                        <div class="container">
+                        <div class="container" style="width: 100%">
                                     <form ng-submit="addNewRecommendation()" id = "recform">
                                         <div class="form-group row">
-                                            <label>Recommendation Name (Required)</label>
-                                            <div class = 'input-group'>
+                                            <label  style="width: 100%" >Recommendation Name (Required)</label>
+                                            <div class = 'input-group'  style="width: 100%">
                                                 <input type = "text" class="form-control" placeholder = 'Enter recommendation name' ng-model = "newName" required>
                                             </div>
                                         </div>
+
                                         <div class="form-group row">
-                                            <label>Description</label>
-                                            <div class ='input-group'>
-                                                <input type = "text"  class="form-control" placeholder = 'Enter recommendation description' ng-model = "newDescription" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label>Image URL (Required)</label>
-                                            <div class ='input-group'>
+                                            <label  style="width: 100%">Recommendation Image (Required)</label>
+                                            <div class ='input-group'  style="width: 100%">
                                                 <input type = "file" file-model = "myFile"/>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label>Cost (Required)</label>
-                                            <div ng-dropdown-multiselect="7" options="costsList" selected-model="selectedCost" extra-settings="singleSelectDropDown"></div>
+                                            <label  style="width: 100%">Description</label>
+                                            <div class ='input-group'  style="width: 100%">
+                                                <textarea type = "text"  class="form-control" placeholder = 'Enter recommendation description' ng-model = "newDescription" rows="3" required></textarea>
+                                            </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label>Type (Required)</label>
+                                            <label  style="width: 100%">Cost (Required)</label>
+                                            <div style="width: 100%" ng-dropdown-multiselect="7" options="costsList" selected-model="selectedCost" extra-settings="singleSelectDropDown"></div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label>Recommendation Type (Safety, mobibility, visibility) (Required)</label>
                                             <div ng-dropdown-multiselect="5" options="typeList" selected-model="selectedType" extra-settings="singleSelectDropDown"></div>
                                         </div>
                                         <div class="form-group row">
-                                                <label>Locations (Required) </label>
+                                                <label>Applicable Locations (Required) </label>
                                                 <div ng-dropdown-multiselect="" options="stateList" selected-model="selectedStates" extra-settings="dropDownSettings"></div>
                                         </div>
                                         <div class="form-group row">
-                                                <label>Income Bracket (Required) </label>
+                                                <label>Applicable Income Group (Required) </label>
                                                 <div ng-dropdown-multiselect="1" options="incomeBracketList" selected-model="selectedIncomeBrackets" extra-settings="dropDownSettings"></div>
                                         </div>
                                         <div class="form-group row">
-                                                <label>Gender (Required) </label>
+                                                <label>Applicable Genders (Required) </label>
                                                 <div ng-dropdown-multiselect="2" options="genderList" selected-model="selectedGenders" extra-settings="dropDownSettings"></div>
                                         </div>
                                         <div class="form-group row">
-                                            <label>Room Types (Required) </label>
+                                            <label>Applicable Room Types (Required) </label>
                                             <div ng-dropdown-multiselect="3" options="roomTypeList" selected-model="selectedRoomTypes" extra-settings="dropDownSettings"></div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label>Ages (Required) </label>
+                                        <div class="form-group row" style="width:100%">
+                                            <label>Applicable Ages (Required) </label>
                                             <div ng-dropdown-multiselect="4" options="ageList" selected-model="selectedAges" extra-settings="dropDownSettings"></div>
                                         </div>
                                         <div class="form-group row">
-                                            <label>Physical Concerns (Required) </label>
+                                            <label>Applicable Physical Concerns (Required) </label>
                                             <div ng-dropdown-multiselect="6" options="concernList" selected-model="selectedConcerns" extra-settings="dropDownSettings"></div>
                                         </div>
                                         <div class="form-group row">
-                                                <label>Website 1</label>
-                                                <div class ='input-group'>
-                                                    <input type = "text"  class="form-control" placeholder = 'Enter website name' ng-model = "newRecWebsites[0]['label']" required>
-                                                    <input type = "text"  class="form-control" placeholder = 'Enter website url' ng-model = "newRecWebsites[0]['url']" required>
+                                                <label>Reference Website 1</label>
+                                                <div class ='input-group'  style="width: 100%">
+                                                    <input type = "text"  class="form-control" placeholder = 'Enter website name' ng-model = "newRecWebsites[0]['label']" >
+                                                    <input type = "text"  class="form-control" placeholder = 'Enter website url' ng-model = "newRecWebsites[0]['url']" >
                                                 </div>
                                                 <br>
-                        
-                                                <label>Website 2</label>
-                                                <div class ='input-group'>
+                                                <label>Reference Website 2</label>
+                                                <div class ='input-group'  style="width: 100%">
                                                     <input type = "text"  class="form-control" placeholder = 'Enter website name' ng-model = "newRecWebsites[1]['label']">
                                                     <input type = "text"  class="form-control" placeholder = 'Enter website url' ng-model = "newRecWebsites[1]['url']">
                                                 </div>

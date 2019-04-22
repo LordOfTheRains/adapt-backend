@@ -16,6 +16,7 @@
                         <th>Description</th>
                         <th>Websites</th>
                         <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,14 +25,23 @@
                         <td>{{rec.name}}</td>
                         <td>{{rec.description}}</td>
                         <td>
-                            <table>
+                            <table class="table table-striped" ng-show="rec.websites.length > 0">
                                 <tr ng-repeat = "website in rec.websites">
-                                    <td> {{website.label}} : {{website.url}}  </td>
+                                        
+                                    <td>  
+                                        <a href="{{website.url}}" target="_blank" >
+                                            <div style="height:100%;width:100%">
+                                                    {{website.label}}
+                                            </div>
+                                          </a>
+                                    </td>
                                 </tr>
                             </table>
                         </td>
                         <td>
                             <button  type = "button" class="btn btn-success" ng-click ="openUpdateRecommendationForm(rec)">Update</button>
+                        </td>
+                        <td>
                             <button type="button" class="btn btn-warning" ng-click = "deleteRecommendation(rec)">Delete</button>
                         </td>
                     </tr>

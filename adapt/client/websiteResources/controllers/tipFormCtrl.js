@@ -3,68 +3,65 @@
 
 app.controller('tipFormCtrl', function($scope, $http, $modalInstance, $route, tip) {
   const serverURL = "http://165.227.3.148:8080/";
-  $scope.newTipWebsites = [];
+  $scope.buildingProfID = 3;
+  $scope.newTipWebsite ="";
   $scope.selectedType = [];
   $scope.selectedSubtype = [];
   $scope.selectedStates = [];
   $scope.selectedIncomeBrackets = [];
   $scope.selectedGenders = [];
-  $scope.tipTypeList = [{id: 1, label: "Financial"}, {id: 2, label: "State/Federal Programs"}, {id: 3, label: "Building Professionals"}, {id: 4, label: "Product"}, {id: 5, label: "Videos"}, {id: 6, label: "Technology"}];
-  $scope.tipSubtypeList = [{id: 1, label: "Contractor"}, {id: 2, label: "Builder"}, {id: 3, label: "Technician"}, {id: 4, label: "Designer"}, {id: 5, label: "Become A Certified Consultant"}];
-  $scope.stateList = [  {id: 1, label: "Alabama"}, {id: 2, label: "Alaska"}, {id: 3, label: "Arizona"},
-                          {id: 4, label: "Arkansas"}, {id: 5, label: "California"}, {id: 6, label: "Colorado"},
-                          {id: 7, label: "Connnecticut"}, {id: 8, label: "Delaware"}, {id: 9, label: "Florida"},
-                          {id: 10, label: "Georgia"}, {id: 11, label: "Hawaii"}, {id: 12, label: "Idaho"},
-                          {id: 13, label: "Illinois"}, {id: 14, label: "Indiana"}, {id: 15, label: "Iowa"},
-                          {id: 16, label: "Kansas"}, {id: 17, label: "Kentucky"}, {id: 18, label: "Louisiana"},
-                          {id: 19, label: "Maine"}, {id: 20, label: "Maryland"}, {id: 21, label: "Massachusetts"},
-                          {id: 22, label: "Michigan"}, {id: 23, label: "Minnesota"}, {id: 24, label: "Mississippi"},
-                          {id: 25, label: "Missouri"}, {id: 26, label: "Montana"}, {id: 27, label: "Nebraska"},
-                          {id: 28, label: "Nevada"}, {id: 29, label: "New Hampshire"}, {id: 30, label: "New Jersey"},
-                          {id: 31, label: "New Mexico"}, {id: 32, label: "New York"}, {id: 33, label: "North Carolina"},
-                          {id: 34, label: "North Dakota"}, {id: 35, label: "Ohio"}, {id: 36, label: "Oklahoma"},
-                          {id: 37, label: "Oregon"}, {id: 38, label: "Pennsylvania"}, {id: 39, label: "Rhode Island"},
-                          {id: 40, label: "South Carolina"}, {id: 41, label: "South Dakota"}, {id: 42, label: "Tennessee"},
-                          {id: 43, label: "Texas"}, {id: 44, label: "Utah"}, {id: 45, label: "Vermont"},
-                          {id: 46, label: "Virginia"}, {id: 47, label: "Washington"}, {id: 48, label: "West Virginia"},
-                          {id: 49, label: "Wisconsin"}, {id: 50, label: "Wyoming"}  
-                       ];
-  $scope.incomeBracketList = [ {id: 1, label: "0 - 30,000"}, {id: 2, label: "30,000 - 60,000"}, {id: 3, label: "60,000+"}];
-  $scope.genderList = [ {id: 1, label: "Female"}, {id: 2, label: "Male"},];
+  $scope.tipTypeList = [{id: 1, label: "Financial"}, 
+                        {id: 2, label: "State/Federal Programs"}, 
+                        {id: 3, label: "Building Professionals"},
+                        {id: 4, label: "Product"}, 
+                        {id: 5, label: "Videos"},
+                        {id: 6, label: "Technology"}];
+  $scope.tipSubtypeList = [{id: 1, label: "Contractor"}, 
+                            {id: 2, label: "Builder"}, 
+                            {id: 3, label: "Technician"}, 
+                            {id: 4, label: "Designer"}, 
+                            {id: 5, label: "Become A Certified Consultant"}];
+  $scope.stateList = [
+    {id: 1, label: "AL"},{id: 2, label: "AK"},{id: 3, label: 'AS'},{id: 4, label: 'AZ'},
+    {id: 5, label: 'AR'},{id: 6, label: 'CA'},{id: 7, label: 'CO'},{id: 8, label: 'CT'},
+    {id: 9, label: 'DE'},{id: 10, label: 'DC'},{id: 11, label: 'FM'},{id: 12, label: 'FL'},
+    {id: 13, label: 'GA'},{id: 14, label: 'GU'},{id: 15, label: 'HI'},{id: 16, label: 'ID'},
+    {id: 17, label: 'IL'},{id: 18, label: 'IN'},{id: 19, label: 'IA'},{id: 20, label: 'KS'},
+    {id: 21, label: 'KY'},{id: 22, label: 'LA'},{id: 23, label: 'ME'},{id: 24, label: 'MH'},
+    {id: 25, label: 'MD'},{id: 26, label: 'MA'},{id: 27, label: 'MI'},{id: 28, label: 'MN'},
+    {id: 29, label: 'MS'},{id: 30, label: 'MO'},{id: 31, label: 'MT'},{id: 32, label: 'NE'},
+    {id: 33, label: 'NV'},{id: 34, label: 'NH'},{id: 35, label: 'NJ'},{id: 36, label: 'NM'},
+    {id: 37, label: 'NY'},{id: 38, label: 'NC'},{id: 39, label: 'ND'},{id: 40, label: 'MP'},
+    {id: 41, label: 'OH'},{id: 42, label: 'OK'},{id: 43, label: 'OR'},{id: 44, label: 'PW'},
+    {id: 45, label: 'PA'},{id: 46, label: 'PR'},{id: 47, label: 'RI'},{id: 48, label: 'SC'},
+    {id: 49, label: 'SD'},{id: 50, label: 'TN'},{id: 51, label: 'TX'},{id: 52, label: 'UT'},
+    {id: 53, label: 'VT'},{id: 54, label: 'VI'},{id: 55, label: 'VA'},{id: 56, label: 'WA'},
+    {id: 57, label: 'WV'},{id: 58, label: 'WI'},{id: 59, label: 'WY'}
+   ];
+  $scope.incomeBracketList = [ {id: 1, label: "0 - 30,000"}, {id: 2, label: "30,000 - 60,000"}, {id:3, label: "60,000+"}];
+  $scope.genderList = [ {id: 1, label: "Male"}, {id: 2, label: "Female"}, {id: 3, label: "Other"}];
   $scope.dropDownSettings = { checkBoxes: true, scrollableHeight: '200px', scrollable: true, selectedToTop: true, idProperty: 'id' };
   $scope.singleSelectDropDown = { checkBoxes: true, scrollableHeight: '200px', scrollable: true, selectedToTop: true, idProperty: 'id', selectionLimit: 1};
 
 
   // Adds a new tip to the tip list currently in the database
   $scope.addNewTip = function() {
-    if ($scope.selectedType[0].id == 3){
-      var dataObj = {
-        name: $scope.newTip.name,
-        description: $scope.newTip.description,
-        websites: $scope.newTipWebsites,
-        type: getIntFromDropDown($scope.selectedType[0]),
-        subtype: getStringFromDropDown($scope.selectedSubtype[0]),
-        minAge: parseInt($scope.newTip.minAge),
-        maxAge: parseInt($scope.newTip.maxAge),
-        applicableIncomes: getIntArrayFromDropDown($scope.selectedIncomeBrackets),
-        applicableGenders: getIntArrayFromDropDown($scope.selectedGenders),
-        applicableLocations: getIntArrayFromDropDown($scope.selectedStates)
-      };
+    var dataObj = {
+      name: $scope.newTip.name,
+      description: $scope.newTip.description,
+      website: $scope.newTipWebsite,
+      type: getIntFromDropDown($scope.selectedType[0]),
+      subtype: null,
+      minAge: parseInt($scope.newTip.minAge),
+      maxAge: parseInt($scope.newTip.maxAge),
+      applicableIncomes: getIntArrayFromDropDown($scope.selectedIncomeBrackets),
+      applicableGenders: getIntArrayFromDropDown($scope.selectedGenders),
+      applicableLocations: getIntArrayFromDropDown($scope.selectedStates)
+    };
+    if ($scope.selectedType[0].id == $scope.buildingProfID){
+      dataObj.subtype = getStringFromDropDown($scope.selectedSubtype[0]);
     }
-    else { 
-      var dataObj = {
-        name: $scope.newTip.name,
-        description: $scope.newTip.description,
-        websites: $scope.newTipWebsites,
-        type: getIntFromDropDown($scope.selectedType[0]),
-        subtype: null,
-        minAge: parseInt($scope.newTip.minAge),
-        maxAge: parseInt($scope.newTip.maxAge),
-        applicableIncomes: getIntArrayFromDropDown($scope.selectedIncomeBrackets),
-        applicableGenders: getIntArrayFromDropDown($scope.selectedGenders),
-        applicableLocations: getIntArrayFromDropDown($scope.selectedStates)
-      };
-    }
+    console.log("newTip:", dataObj);
     var res = $http.post(serverURL + 'api/Tips', dataObj);
       res.then(function(data, status, headers, config) {
         alert("New tip added to the database.");
@@ -78,36 +75,23 @@ app.controller('tipFormCtrl', function($scope, $http, $modalInstance, $route, ti
   // Updates the selected tip based on the information currently
   // residing in the form at the time of submission
   $scope.updateTip = function() {
-    if($scope.updatedSelectedType[0].id  == 3){
-      var dataObj = {
-        name: $scope.updatedName,
-        description: $scope.updatedDescription,
-        websites: $scope.updatedTipWebsites,
-        type: getIntFromDropDown($scope.updatedSelectedType[0]),
-        subtype: getStringFromDropDown($scope.updatedSelectedSubtype[0]),
-        minAge: parseInt($scope.updatedMinAge),
-        maxAge: parseInt($scope.updatedMaxAge),
-        applicableIncomes: getIntArrayFromDropDown($scope.updatedSelectedIncomeBrackets),
-        applicableGenders: getIntArrayFromDropDown($scope.updatedSelectedGenders),
-        applicableLocations: getIntArrayFromDropDown($scope.updatedSelectedStates),
-        id: tip.id
-      };
+    var dataObj = {
+      name: $scope.updatedName,
+      description: $scope.updatedDescription,
+      website: $scope.updatedTipWebsite,
+      type: getIntFromDropDown($scope.updatedSelectedType[0]),
+      subtype: null,
+      minAge: parseInt($scope.updatedMinAge),
+      maxAge: parseInt($scope.updatedMaxAge),
+      applicableIncomes: getIntArrayFromDropDown($scope.updatedSelectedIncomeBrackets),
+      applicableGenders: getIntArrayFromDropDown($scope.updatedSelectedGenders),
+      applicableLocations: getIntArrayFromDropDown($scope.updatedSelectedStates),
+      id: tip.id
+    };
+    if($scope.updatedSelectedType[0].id  == $scope.buildingProfID){
+      dataObj.subtype = getStringFromDropDown($scope.updatedSelectedSubtype[0]);
     }
-    else{
-      var dataObj = {
-        name: $scope.updatedName,
-        description: $scope.updatedDescription,
-        websites: $scope.updatedTipWebsites,
-        type: getIntFromDropDown($scope.updatedSelectedType[0]),
-        subtype: null,
-        minAge: parseInt($scope.updatedMinAge),
-        maxAge: parseInt($scope.updatedMaxAge),
-        applicableIncomes: getIntArrayFromDropDown($scope.updatedSelectedIncomeBrackets),
-        applicableGenders: getIntArrayFromDropDown($scope.updatedSelectedGenders),
-        applicableLocations: getIntArrayFromDropDown($scope.updatedSelectedStates),
-        id: tip.id
-      };
-    }
+    console.log("new tip:", dataObj);
     var res = $http.put(serverURL + 'api/Tips/' + dataObj.id, dataObj);
     res.then(function(data, status, headers, config) {
       alert("Tip updated in the database.");
@@ -126,30 +110,20 @@ app.controller('tipFormCtrl', function($scope, $http, $modalInstance, $route, ti
   // Used to populate the form upon opening based on the
   // selected tip's info
   $scope.populateForm = function() {
-
-    $scope.updatedTipWebsites = [];
+    console.log(tip);
+    $scope.updatedTipWebsite = [];
     $scope.updatedName = tip.name;
     $scope.updatedDescription = tip.description;
     $scope.updatedMinAge = tip.minAge;
     $scope.updatedMaxAge = tip.maxAge;
-    $scope.updatedTipWebsites = tip.websites;
-    $scope.updatedSelectedType = [];
-    $scope.updatedSelectedSubtype = [];
-    $scope.updatedSelectedStates = [];
-    $scope.updatedSelectedIncomeBrackets = [];
-    $scope.updatedSelectedGenders = [];
-
-    //arrays as stored inside the database
-    var tempList1 = tip.applicableLocations;
-    var tempList2 = tip.applicableIncomes;
-    var tempList3 = tip.applicableGenders;
+    $scope.updatedTipWebsite = tip.website;
 
     //database arrays are formatted to the dropdown menu format
     $scope.updatedSelectedType = getType($scope.tipTypeList, tip.type);
     $scope.updatedSelectedSubtype = getSubtype($scope.tipSubtypeList, tip.subtype);
-    $scope.updatedSelectedGenders = getDropDownArrayFromList($scope.genderList, tempList3);
-    $scope.updatedSelectedIncomeBrackets = getDropDownArrayFromList($scope.incomeBracketList, tempList2);
-    $scope.updatedSelectedStates = getDropDownArrayFromList($scope.stateList, tempList1);
+    $scope.updatedSelectedGenders = getDropDownArrayFromList($scope.genderList, tip.applicableGenders);
+    $scope.updatedSelectedIncomeBrackets = getDropDownArrayFromList($scope.incomeBracketList, tip.applicableIncomes);
+    $scope.updatedSelectedStates = getDropDownArrayFromList($scope.stateList, tip.applicableLocations);
   };
 });
 
@@ -158,8 +132,8 @@ app.controller('tipFormCtrl', function($scope, $http, $modalInstance, $route, ti
 function getIntArrayFromDropDown(selectedArray){
   var tempArray = [];
   selectedArray.forEach(function(item){
-    var temp = (item.id - 1);
-    tempArray.push(temp);
+    console.log(item);
+    tempArray.push(item.id-1);
   });
   return tempArray;
 }
@@ -169,7 +143,7 @@ function getIntArrayFromDropDown(selectedArray){
 function getDropDownArrayFromList(list, selecteditems){
   var tempArray = [];
   selecteditems.forEach(function(item){
-    var temp = (item + 1);
+    var temp = (item +1 );//+1
     list.forEach(function(item2){
       if (temp == item2.id) {
         tempArray.push(item2);
@@ -180,22 +154,25 @@ function getDropDownArrayFromList(list, selecteditems){
 }
 
 function getIntFromDropDown(selectedItem) {
-  return (selectedItem.id - 1);
+  return (selectedItem.id+1);
 }
 
 function getStringFromDropDown(selectedItem) {
   return selectedItem.label;
-}
+} 
 
 function getType(list, selectedValue) {
   var tempArray = [];
-  var temp = (selectedValue + 1);
+  var temp = (selectedValue+1);//+1
   list.forEach(function(item){
     if (item.id == temp) {
       tempArray.push(item);
     }
   });
+  console.log(selectedValue)
+  console.log(tempArray)
   return tempArray;
+
 }
 
 function getSubtype(list, selectedValue) {

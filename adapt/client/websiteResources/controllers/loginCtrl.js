@@ -14,7 +14,6 @@ app.controller('loginCtrl', function($scope, $http, $location, $rootScope, login
     };
     var res = $http.post(serverURL + 'api/Users/login', dataObj);
     res.then(function(data, status, headers, config) {
-      alert("Login Worked");
       var response = data;
       var accesstoken = response.data.id;
       sessionStorage.setItem("user", $scope.email);

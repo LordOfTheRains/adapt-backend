@@ -4,6 +4,13 @@
 app.controller('tipCtrl', function($scope, $http, $route, $modal, $rootScope) {
 
   const serverURL = "http://165.227.3.148:8080/";
+  const typeTypes = [
+    {id: 1, label: "Financial"}, 
+  {id: 2, label: "State/Federal Programs"}, 
+  {id: 3, label: "Building Professionals"}, 
+  {id: 4, label: "Product"}, 
+  {id: 5, label: "Videos"}, 
+  {id: 6, label: "Technology"}];
 
   // Gets all tips currently inside the database
   $scope.pageInit = function() {

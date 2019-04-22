@@ -24,44 +24,38 @@
                                         <label>Type (Required) </label>
                                         <div ng-dropdown-multiselect="3" options="tipTypeList" selected-model="selectedType" extra-settings="singleSelectDropDown" required></div>
                                     </div>
-                                    <div class="form-group row" ng-show = "selectedType[0].id == 3">
+                                    <div class="form-group row" ng-show = "selectedType[0].id == buildingProfID">
                                         <label>Subtype </label>
                                         <div ng-dropdown-multiselect="4" options="tipSubtypeList" selected-model="selectedSubtype" extra-settings="singleSelectDropDown"></div>
                                     </div>
                                     <div class="form-group row">
-                                        <label>Minimum Age (if applicable)</label>
+                                        <label>Minimum Age  (Required) </label>
                                         <div class ='input-group'>
-                                            <input type = "text"  class="form-control" placeholder = 'Enter minimum age' ng-model = "newTip.minAge">
+                                            <input type = "number"  class="form-control" placeholder = 'Enter minimum age' ng-model = "newTip.minAge" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label>Maximum Age (if applicable)</label>
+                                        <label>Maximum Age   (Required) </label>
                                         <div class ='input-group'>
-                                            <input type = "text"  class="form-control" placeholder = 'Enter maximum age' ng-model = "newTip.maxAge">
+                                            <input type = "number"  class="form-control" placeholder = 'Enter maximum age' ng-model = "newTip.maxAge" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                            <label>Locations (if applicable) </label>
+                                            <label>Applicable Locations  (Required)  </label>
                                             <div ng-dropdown-multiselect="" options="stateList" selected-model="selectedStates" extra-settings="dropDownSettings"></div>
                                     </div>
                                     <div class="form-group row">
-                                            <label>Income Bracket (if applicable) </label>
+                                            <label>Applicable Income Brackets  (Required)  </label>
                                             <div ng-dropdown-multiselect="1" options="incomeBracketList" selected-model="selectedIncomeBrackets" extra-settings="dropDownSettings"></div>
                                     </div>
                                     <div class="form-group row">
-                                            <label>Gender (if applicable) </label>
+                                            <label>Applicable Genders   (Required) </label>
                                             <div ng-dropdown-multiselect="2" options="genderList" selected-model="selectedGenders" extra-settings="dropDownSettings"></div>
                                     </div>
                                     <div class="form-group row">
-                                            <label>Website 1</label>
+                                            <label>Tip Website (Required)</label>
                                             <div class ='input-group'>
-                                                <input type = "text"  class="form-control" placeholder = 'Enter website url' ng-model = "newTipWebsites[0]">
-                                            </div>
-                                            <br>
-                    
-                                            <label>Website 2</label>
-                                            <div class ='input-group'>
-                                                <input type = "text"  class="form-control" placeholder = 'Enter website url' ng-model = "newTipWebsites[1]">
+                                                <input type = "text"  class="form-control" placeholder = 'Enter website url' ng-model = "newTipWebsite" required>
                                             </div>
                                             <br>
                                     </div>

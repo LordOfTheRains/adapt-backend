@@ -14,30 +14,31 @@ app.controller('recommendationFormCtrl', function($scope, $http, $route, $modalI
   $scope.selectedCost = [];
 
   $scope.costsList = [{id: 1, label: "Low"}, {id: 2, label: "Medium"}, {id: 3, label: "High"}];
-  $scope.roomTypeList = [{id: 1, label: "Outside The Home"}, {id: 2, label: "Entrance"}, {id: 3, label: "Travel Space"}, {id: 4, label: "Kitchen"}, {id: 5, label: "Bedroom"}, {id: 6, label: "Storage"}, {id: 7, label: "Laundry"}, {id: 8, label: "General"}];
-  $scope.concernList = [{id: 1, label: "Wheelchair"}, {id: 2, label: "Blindness"}, {id: 3, label: "Speech Impairment"}];
+  $scope.roomTypeList = [{id: 1, label: "Outside The Home"}, {id: 2, label: "Entrance"}, 
+                          {id: 3, label: "Travel Space"}, {id: 4, label: "Kitchen"}, {id: 5, label: "Restroom"}, {id: 6, label: "Bedroom"}, 
+                          {id: 7, label: "Storage"}, {id: 8, label: "Laundry"}, {id: 9, label: "General"}];
+  $scope.concernList = [{id: 1, label: "Wheelchair"}, {id: 2, label: "Blindness"}, {id: 3, label: "Speech Impairment"},{id: 4, label: "Deaf"} ];
   $scope.ageList = [{id: 1, label: "40-45"}, {id: 2, label: "45-50"}, {id: 3, label: "50-60"}, {id: 4, label: "60+"}];
   $scope.typeList = [{id: 1, label: "Safety"}, {id: 2, label: "Mobility"}, {id: 3, label: "Visibility"}];
-  $scope.stateList = [  {id: 1, label: "Alabama"}, {id: 2, label: "Alaska"}, {id: 3, label: "Arizona"},
-                            {id: 4, label: "Arkansas"}, {id: 5, label: "California"}, {id: 6, label: "Colorado"},
-                            {id: 7, label: "Connnecticut"}, {id: 8, label: "Delaware"}, {id: 9, label: "Florida"},
-                            {id: 10, label: "Georgia"}, {id: 11, label: "Hawaii"}, {id: 12, label: "Idaho"},
-                            {id: 13, label: "Illinois"}, {id: 14, label: "Indiana"}, {id: 15, label: "Iowa"},
-                            {id: 16, label: "Kansas"}, {id: 17, label: "Kentucky"}, {id: 18, label: "Louisiana"},
-                            {id: 19, label: "Maine"}, {id: 20, label: "Maryland"}, {id: 21, label: "Massachusetts"},
-                            {id: 22, label: "Michigan"}, {id: 23, label: "Minnesota"}, {id: 24, label: "Mississippi"},
-                            {id: 25, label: "Missouri"}, {id: 26, label: "Montana"}, {id: 27, label: "Nebraska"},
-                            {id: 28, label: "Nevada"}, {id: 29, label: "New Hampshire"}, {id: 30, label: "New Jersey"},
-                            {id: 31, label: "New Mexico"}, {id: 32, label: "New York"}, {id: 33, label: "North Carolina"},
-                            {id: 34, label: "North Dakota"}, {id: 35, label: "Ohio"}, {id: 36, label: "Oklahoma"},
-                            {id: 37, label: "Oregon"}, {id: 38, label: "Pennsylvania"}, {id: 39, label: "Rhode Island"},
-                            {id: 40, label: "South Carolina"}, {id: 41, label: "South Dakota"}, {id: 42, label: "Tennessee"},
-                            {id: 43, label: "Texas"}, {id: 44, label: "Utah"}, {id: 45, label: "Vermont"},
-                            {id: 46, label: "Virginia"}, {id: 47, label: "Washington"}, {id: 48, label: "West Virginia"},
-                            {id: 49, label: "Wisconsin"}, {id: 50, label: "Wyoming"}  
-                      ];
+  $scope.stateList = [
+    {id: 1, label: "AL"},{id: 2, label: "AK"},{id: 3, label: 'AS'},{id: 4, label: 'AZ'},
+    {id: 5, label: 'AR'},{id: 6, label: 'CA'},{id: 7, label: 'CO'},{id: 8, label: 'CT'},
+    {id: 9, label: 'DE'},{id: 10, label: 'DC'},{id: 11, label: 'FM'},{id: 12, label: 'FL'},
+    {id: 13, label: 'GA'},{id: 14, label: 'GU'},{id: 15, label: 'HI'},{id: 16, label: 'ID'},
+    {id: 17, label: 'IL'},{id: 18, label: 'IN'},{id: 19, label: 'IA'},{id: 20, label: 'KS'},
+    {id: 21, label: 'KY'},{id: 22, label: 'LA'},{id: 23, label: 'ME'},{id: 24, label: 'MH'},
+    {id: 25, label: 'MD'},{id: 26, label: 'MA'},{id: 27, label: 'MI'},{id: 28, label: 'MN'},
+    {id: 29, label: 'MS'},{id: 30, label: 'MO'},{id: 31, label: 'MT'},{id: 32, label: 'NE'},
+    {id: 33, label: 'NV'},{id: 34, label: 'NH'},{id: 35, label: 'NJ'},{id: 36, label: 'NM'},
+    {id: 37, label: 'NY'},{id: 38, label: 'NC'},{id: 39, label: 'ND'},{id: 40, label: 'MP'},
+    {id: 41, label: 'OH'},{id: 42, label: 'OK'},{id: 43, label: 'OR'},{id: 44, label: 'PW'},
+    {id: 45, label: 'PA'},{id: 46, label: 'PR'},{id: 47, label: 'RI'},{id: 48, label: 'SC'},
+    {id: 49, label: 'SD'},{id: 50, label: 'TN'},{id: 51, label: 'TX'},{id: 52, label: 'UT'},
+    {id: 53, label: 'VT'},{id: 54, label: 'VI'},{id: 55, label: 'VA'},{id: 56, label: 'WA'},
+    {id: 57, label: 'WV'},{id: 58, label: 'WI'},{id: 59, label: 'WY'}
+   ];
     $scope.incomeBracketList = [ {id: 1, label: "0 - 30,000"}, {id: 2, label: "30,000 - 60,000"}, {id: 3, label: "60,000+"}];
-    $scope.genderList = [ {id: 1, label: "Female"}, {id: 2, label: "Male"},];
+    $scope.genderList = [ {id: 1, label: "Male"}, {id: 2, label: "Female"},{id: 2, label: "Other"}];
     $scope.dropDownSettings = { checkBoxes: true, scrollableHeight: '200px', scrollable: true, selectedToTop: true, idProperty: 'id' };
     $scope.singleSelectDropDown = { checkBoxes: true, scrollableHeight: '200px', scrollable: true, selectedToTop: true, idProperty: 'id', selectionLimit: 1 };
   

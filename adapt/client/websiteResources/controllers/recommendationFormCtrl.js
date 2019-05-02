@@ -1,62 +1,87 @@
 // Defines the functions and variables (excluding $rootScope) that
 // both the newRecommendationForm and updateRecommendationForm have available to them.
 
-app.controller('recommendationFormCtrl', function($scope, $http, $window, $modalInstance, recommendation) {
-    const serverURL = "http://142.93.198.244:8080/";
-    $scope.newRecWebsites = new Array(2);
-    $scope.selectedStates = []; 
-    $scope.selectedIncomeBrackets = [];
-    $scope.selectedGenders = [];
-    $scope.selectedRoomTypes = [];
-    $scope.selectedAges = [];
+app.controller('recommendationFormCtrl', function($scope, $http, $route, $modalInstance, recommendation) {
+  const serverURL = "http://142.93.198.244:8080/";
+  $scope.newRecWebsites = new Array(2);
+  $scope.selectedStates = []; 
+  $scope.selectedIncomeBrackets = [];
+  $scope.selectedGenders = [];
+  $scope.selectedRoomTypes = [];
+  $scope.selectedAges = [];
+  $scope.selectedType = [];
+  $scope.selectedConcerns = [];
+  $scope.selectedCost = [];
 
-    $scope.roomTypeList = [{id: 1, label: "Kitchen"}, {id: 2, label: "Living Room"}, {id: 3, label: "Bedroom"}, {id: 4, label: "Bathroom"}];
-    $scope.ageList = [{id: 1, label: "40-45"}, {id: 2, label: "45-50"}, {id: 3, label: "50-60"}, {id: 4, label: "60+"}];
-
-    $scope.stateList = [  {id: 1, label: "Alabama"}, {id: 2, label: "Alaska"}, {id: 3, label: "Arizona"},
-                            {id: 4, label: "Arkansas"}, {id: 5, label: "California"}, {id: 6, label: "Colorado"},
-                            {id: 7, label: "Connnecticut"}, {id: 8, label: "Delaware"}, {id: 9, label: "Florida"},
-                            {id: 10, label: "Georgia"}, {id: 11, label: "Hawaii"}, {id: 12, label: "Idaho"},
-                            {id: 13, label: "Illinois"}, {id: 14, label: "Indiana"}, {id: 15, label: "Iowa"},
-                            {id: 16, label: "Kansas"}, {id: 17, label: "Kentucky"}, {id: 18, label: "Louisiana"},
-                            {id: 19, label: "Maine"}, {id: 20, label: "Maryland"}, {id: 21, label: "Massachusetts"},
-                            {id: 22, label: "Michigan"}, {id: 23, label: "Minnesota"}, {id: 24, label: "Mississippi"},
-                            {id: 25, label: "Missouri"}, {id: 26, label: "Montana"}, {id: 27, label: "Nebraska"},
-                            {id: 28, label: "Nevada"}, {id: 29, label: "New Hampshire"}, {id: 30, label: "New Jersey"},
-                            {id: 31, label: "New Mexico"}, {id: 32, label: "New York"}, {id: 33, label: "North Carolina"},
-                            {id: 34, label: "North Dakota"}, {id: 35, label: "Ohio"}, {id: 36, label: "Oklahoma"},
-                            {id: 37, label: "Oregon"}, {id: 38, label: "Pennsylvania"}, {id: 39, label: "Rhode Island"},
-                            {id: 40, label: "South Carolina"}, {id: 41, label: "South Dakota"}, {id: 42, label: "Tennessee"},
-                            {id: 43, label: "Texas"}, {id: 44, label: "Utah"}, {id: 45, label: "Vermont"},
-                            {id: 46, label: "Virginia"}, {id: 47, label: "Washington"}, {id: 48, label: "West Virginia"},
-                            {id: 49, label: "Wisconsin"}, {id: 50, label: "Wyoming"}  
-                         ];
+  $scope.costsList = [{id: 1, label: "Low"}, {id: 2, label: "Medium"}, {id: 3, label: "High"}];
+  $scope.roomTypeList = [{id: 1, label: "Outside The Home"}, {id: 2, label: "Entrance"}, 
+                          {id: 3, label: "Travel Space"}, {id: 4, label: "Kitchen"}, {id: 5, label: "Restroom"}, {id: 6, label: "Bedroom"}, 
+                          {id: 7, label: "Storage"}, {id: 8, label: "Laundry"}, {id: 9, label: "General"}];
+  $scope.concernList = [{id: 1, label: "Wheelchair"}, {id: 2, label: "Blindness"}, {id: 3, label: "Speech Impairment"},{id: 4, label: "Deaf"} ];
+  $scope.ageList = [{id: 1, label: "40-45"}, {id: 2, label: "45-50"}, {id: 3, label: "50-60"}, {id: 4, label: "60+"}];
+  $scope.typeList = [{id: 1, label: "Safety"}, {id: 2, label: "Mobility"}, {id: 3, label: "Visibility"}];
+  $scope.stateList = [
+    {id: 1, label: "AL"},{id: 2, label: "AK"},{id: 3, label: 'AS'},{id: 4, label: 'AZ'},
+    {id: 5, label: 'AR'},{id: 6, label: 'CA'},{id: 7, label: 'CO'},{id: 8, label: 'CT'},
+    {id: 9, label: 'DE'},{id: 10, label: 'DC'},{id: 11, label: 'FM'},{id: 12, label: 'FL'},
+    {id: 13, label: 'GA'},{id: 14, label: 'GU'},{id: 15, label: 'HI'},{id: 16, label: 'ID'},
+    {id: 17, label: 'IL'},{id: 18, label: 'IN'},{id: 19, label: 'IA'},{id: 20, label: 'KS'},
+    {id: 21, label: 'KY'},{id: 22, label: 'LA'},{id: 23, label: 'ME'},{id: 24, label: 'MH'},
+    {id: 25, label: 'MD'},{id: 26, label: 'MA'},{id: 27, label: 'MI'},{id: 28, label: 'MN'},
+    {id: 29, label: 'MS'},{id: 30, label: 'MO'},{id: 31, label: 'MT'},{id: 32, label: 'NE'},
+    {id: 33, label: 'NV'},{id: 34, label: 'NH'},{id: 35, label: 'NJ'},{id: 36, label: 'NM'},
+    {id: 37, label: 'NY'},{id: 38, label: 'NC'},{id: 39, label: 'ND'},{id: 40, label: 'MP'},
+    {id: 41, label: 'OH'},{id: 42, label: 'OK'},{id: 43, label: 'OR'},{id: 44, label: 'PW'},
+    {id: 45, label: 'PA'},{id: 46, label: 'PR'},{id: 47, label: 'RI'},{id: 48, label: 'SC'},
+    {id: 49, label: 'SD'},{id: 50, label: 'TN'},{id: 51, label: 'TX'},{id: 52, label: 'UT'},
+    {id: 53, label: 'VT'},{id: 54, label: 'VI'},{id: 55, label: 'VA'},{id: 56, label: 'WA'},
+    {id: 57, label: 'WV'},{id: 58, label: 'WI'},{id: 59, label: 'WY'}
+   ];
     $scope.incomeBracketList = [ {id: 1, label: "0 - 30,000"}, {id: 2, label: "30,000 - 60,000"}, {id: 3, label: "60,000+"}];
-    $scope.genderList = [ {id: 1, label: "Female"}, {id: 2, label: "Male"},];
+    $scope.genderList = [ {id: 1, label: "Male"}, {id: 2, label: "Female"},{id: 2, label: "Other"}];
     $scope.dropDownSettings = { checkBoxes: true, scrollableHeight: '200px', scrollable: true, selectedToTop: true, idProperty: 'id' };
+    $scope.singleSelectDropDown = { checkBoxes: true, scrollableHeight: '200px', scrollable: true, selectedToTop: true, idProperty: 'id', selectionLimit: 1 };
   
   
   // Adds a new recommendation to the recommendation list currently in the database
   $scope.addNewRecommendation = function() {
-    var dataObj = {
-      name: $scope.newName,
-      description: $scope.newDescription,
-      websites: $scope.newRecWebsites,
-      cost: $scope.newCost,
-      imageURL: $scope.newImageURL,
-      type: parseInt($scope.newType),
-      applicableAges: getIntArrayFromDropDown($scope.selectedAges),
-      applicableRoomTypes: getIntArrayFromDropDown($scope.selectedRoomTypes),
-      applicableIncomes: getIntArrayFromDropDown($scope.selectedIncomeBrackets),
-      applicableGenders: getIntArrayFromDropDown($scope.selectedGenders),
-      applicableLocations: getIntArrayFromDropDown($scope.selectedStates)
-    };
-    var res = $http.post(serverURL + 'api/Recommendations', dataObj);
-    res.then(function(data, status, headers, config) {
-      alert("New tip added to the database.");
-      $window.location.reload();
+     var file = $scope.myFile;
+     var uploadUrl = serverURL + "api/images/storage/upload";
+
+     var fd = new FormData();
+     fd.append('file', file);
+     var res = $http.post(uploadUrl, fd, {
+         transformRequest: angular.identity,
+         headers: {'Content-Type': undefined}
+     });
+     res.then(function(data, status, headers, config) {
+      var recommendationImageURL = serverURL + "api/images/storage/download/" + file.name;
+
+      var dataObj = {
+        name: $scope.newName,
+        description: $scope.newDescription,
+        websites: $scope.newRecWebsites,
+        cost: getIntFromDropDown($scope.selectedCost[0]),
+        imageURL: recommendationImageURL,
+        type: getIntFromDropDown($scope.selectedType[0]),
+        applicableAges: getIntArrayFromDropDown($scope.selectedAges),
+        applicableRoomTypes: getIntArrayFromDropDown($scope.selectedRoomTypes),
+        applicableIncomes: getIntArrayFromDropDown($scope.selectedIncomeBrackets),
+        applicableGenders: getIntArrayFromDropDown($scope.selectedGenders),
+        applicableLocations: getIntArrayFromDropDown($scope.selectedStates),
+        applicableConcerns: getIntArrayFromDropDown($scope.selectedConcerns)
+      };
+
+      var res = $http.post(serverURL + 'api/Recommendations', dataObj);
+      res.then(function(data, status, headers, config) {
+        alert("New recommendation added to the database.");
+        $scope.closeModal();
+        $route.reload();
+      }, function(data, status, headers, config) {
+        alert( "failure message: " + JSON.stringify({data: data}));
+      });
     }, function(data, status, headers, config) {
-      alert( "failure message: " + JSON.stringify({data: data}));
+      alert("Image upload failed");
     });
   };
   
@@ -64,27 +89,72 @@ app.controller('recommendationFormCtrl', function($scope, $http, $window, $modal
   // residing in the form at the time of submission
 
   $scope.updateRecommendation = function() {
-    var dataObj = {
-      name: $scope.updatedName,
-      description: $scope.updatedDescription,
-      type: parseInt($scope.updatedType),
-      cost: parseInt($scope.updatedCost),
-      imageURL: $scope.updatedImageURL,
-      applicableAges: getIntArrayFromDropDown($scope.updatedSelectedAges),
-      applicableRoomTypes: getIntArrayFromDropDown($scope.updatedSelectedRoomTypes),
-      applicableIncomes: getIntArrayFromDropDown($scope.updatedSelectedIncomeBrackets),
-      applicableGenders: getIntArrayFromDropDown($scope.updatedSelectedGenders),
-      applicableLocations: getIntArrayFromDropDown($scope.updatedSelectedStates),
-      websites: $scope.updatedRecWebsites,
-      id: recommendation.id
-    };
-    var res = $http.put(serverURL + 'api/Recommendations/' + dataObj.id, dataObj);
-    res.then(function(data, status, headers, config) {
-      alert("Recommendation updated in the database.");
-      $window.location.reload();
-    }, function(data, status, headers, config) {
-      alert( "failure message: " + JSON.stringify({data: data}));
-    });
+    if ($scope.newImage == 'yes') {
+      var file = $scope.updatedMyFile;
+      var uploadUrl = serverURL + "api/images/storage/upload";
+
+      var fd = new FormData();
+      fd.append('file', file);
+      var res = $http.post(uploadUrl, fd, {
+         transformRequest: angular.identity,
+         headers: {'Content-Type': undefined}
+      });
+      res.then(function(data, status, headers, config) {
+      var recommendationImageURL = serverURL + "api/images/storage/download/" + file.name;
+
+      var dataObj = {
+        name: $scope.updatedName,
+        description: $scope.updatedDescription,
+        type: getIntFromDropDown($scope.updatedSelectedType[0]),
+        cost: getIntFromDropDown($scope.updatedSelectedCost[0]),
+        imageURL: recommendationImageURL,
+        applicableAges: getIntArrayFromDropDown($scope.updatedSelectedAges),
+        applicableRoomTypes: getIntArrayFromDropDown($scope.updatedSelectedRoomTypes),
+        applicableIncomes: getIntArrayFromDropDown($scope.updatedSelectedIncomeBrackets),
+        applicableGenders: getIntArrayFromDropDown($scope.updatedSelectedGenders),
+        applicableLocations: getIntArrayFromDropDown($scope.updatedSelectedStates),
+        applicableConcerns: getIntArrayFromDropDown($scope.updatedSelectedConcerns),
+        websites: $scope.updatedRecWebsites,
+        id: recommendation.id
+      };
+
+      var res = $http.put(serverURL + 'api/Recommendations/' + dataObj.id, dataObj);
+      res.then(function(data, status, headers, config) {
+        alert("Image and recommendation updated in the database.");
+        $scope.closeModal();
+        $route.reload();
+      }, function(data, status, headers, config) {
+        alert( "failure message: " + JSON.stringify({data: data}));
+      });
+      }, function(data, status, headers, config) {
+        alert("Image upload failed");
+      });
+    }
+    else {
+      var dataObj = {
+        name: $scope.updatedName,
+        description: $scope.updatedDescription,
+        type: getIntFromDropDown($scope.updatedSelectedType[0]),
+        cost: getIntFromDropDown($scope.updatedSelectedCost[0]),
+        imageURL: $scope.updatedImageURL,
+        applicableAges: getIntArrayFromDropDown($scope.updatedSelectedAges),
+        applicableRoomTypes: getIntArrayFromDropDown($scope.updatedSelectedRoomTypes),
+        applicableIncomes: getIntArrayFromDropDown($scope.updatedSelectedIncomeBrackets),
+        applicableGenders: getIntArrayFromDropDown($scope.updatedSelectedGenders),
+        applicableLocations: getIntArrayFromDropDown($scope.updatedSelectedStates),
+        applicableConcerns: getIntArrayFromDropDown($scope.updatedSelectedConcerns),
+        websites: $scope.updatedRecWebsites,
+        id: recommendation.id
+      };
+      var res = $http.put(serverURL + 'api/Recommendations/' + dataObj.id, dataObj);
+      res.then(function(data, status, headers, config) {
+        alert("Recommendation updated in the database.");
+        $scope.closeModal();
+        $route.reload();
+      }, function(data, status, headers, config) {
+        alert( "failure message: " + JSON.stringify({data: data}));
+      });
+    }
   };
   
   // Closes the modal without submitting the form
@@ -98,28 +168,34 @@ app.controller('recommendationFormCtrl', function($scope, $http, $window, $modal
     $scope.updatedName = recommendation.name;
     $scope.updatedDescription = recommendation.description;
     $scope.updatedRecWebsites = recommendation.websites;
-    $scope.updatedType = recommendation.type;
-    $scope.updatedCost = recommendation.cost;
     $scope.updatedImageURL = recommendation.imageURL;
+    $scope.updatedImage = recommendation.imageURL.substring(recommendation.imageURL.lastIndexOf('/') + 1);
     $scope.updatedSelectedStates = [];
     $scope.updatedSelectedIncomeBrackets = [];
     $scope.updatedSelectedGenders = [];
     $scope.updatedSelectedAges = [];
     $scope.updatedSelectedRoomTypes = [];
-  
+    $scope.updatedSelectedType = [];
+    $scope.updatedSelectedConcerns = [];
+    $scope.updatedSelectedCost = [];
+
     // arrays as stored inside the database
     var tempList1 = recommendation.applicableLocations;
     var tempList2 = recommendation.applicableIncomes;
     var tempList3 = recommendation.applicableGenders;
     var tempList4 = recommendation.applicableAges;
     var tempList5 = recommendation.applicableRoomTypes;
+    var tempList6 = recommendation.applicableConcerns;
   
     // database arrays are formatted to the dropdown menu format
+    $scope.updatedSelectedCost = getInt($scope.costsList, recommendation.cost);
+    $scope.updatedSelectedType = getInt($scope.typeList, recommendation.type);
     $scope.updatedSelectedGenders = getDropDownArrayFromList($scope.genderList, tempList3);
     $scope.updatedSelectedIncomeBrackets = getDropDownArrayFromList($scope.incomeBracketList, tempList2);
     $scope.updatedSelectedStates = getDropDownArrayFromList($scope.stateList, tempList1);
     $scope.updatedSelectedAges = getDropDownArrayFromList($scope.ageList, tempList4);
     $scope.updatedSelectedRoomTypes = getDropDownArrayFromList($scope.roomTypeList, tempList5);
+    $scope.updatedSelectedConcerns = getDropDownArrayFromList($scope.concernList, tempList6);
   };
 });
  
@@ -128,7 +204,8 @@ app.controller('recommendationFormCtrl', function($scope, $http, $window, $modal
 function getIntArrayFromDropDown(selectedArray){
   var tempArray = [];
   selectedArray.forEach(function(item){
-    tempArray.push(item.id);
+    var temp = (item.id - 1);
+    tempArray.push(temp);
   });
   return tempArray;
 }
@@ -138,11 +215,26 @@ function getIntArrayFromDropDown(selectedArray){
 function getDropDownArrayFromList(list, selecteditems){
   var tempArray = [];
   selecteditems.forEach(function(item){
+    var temp = (item + 1);
     list.forEach(function(item2){
-      if (item == item2.id) {
+      if (temp == item2.id) {
         tempArray.push(item2);
       }
     });
+  });
+  return tempArray;
+}
+
+function getIntFromDropDown(selectedItem) {
+  return selectedItem.id - 1;
+}
+
+function getInt(list, selectedValue) {
+  var tempArray = [];
+  list.forEach(function(item){
+    if (item.id == (selectedValue + 1)) {
+      tempArray.push(item);
+    }
   });
   return tempArray;
 }

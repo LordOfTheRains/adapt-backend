@@ -5,7 +5,7 @@
                 <a href="#!/tipform" class="btn btn-success" role="button">Link Button</a>
             </div> -->
             <h2 class="text-center" >ADAPT Tips
-                    <button  type = "button" style="float: right;" class="btn btn-success" ng-click="openNewTipForm()">Add New Tip </button>
+                <button  type = "button" style="float: right;" class="btn btn-success" ng-click="openNewTipForm()">Add New Tip </button>
             </h2>
             <div class="row justify-content-md-center">
                 <table class="table table-striped">
@@ -14,7 +14,7 @@
                             <th>ID</th>
                             <th>Name</th>
                             <th>Description</th>
-                            <th>Websites</th>
+                            <th>Website</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -23,15 +23,9 @@
                             <td>{{tip.id}}</td>
                             <td>{{tip.name}}</td>
                             <td>{{tip.description}}</td>
+                            <td>{{tip.website}}</td>
                             <td>
-                                <table>
-                                    <tr ng-repeat = "website in tip.websites">
-                                        <td> {{website.label}} : {{website.url}}  </td>
-                                    </tr>
-                                </table>
-                            </td>
-                            <td>
-                                <button  type = "button" class="btn btn-success" ng-click ="openUpdateForm(tip)">Update</button>
+                                <button  type = "button" class="btn btn-success" ng-click ="openUpdateTipForm(tip)">Update</button>
                                 <button type="button" class="btn btn-warning" ng-click = "deleteTip(tip)">Delete</button>
                             </td>
                         </tr>

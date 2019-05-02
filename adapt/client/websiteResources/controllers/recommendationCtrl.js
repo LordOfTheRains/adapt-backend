@@ -1,7 +1,7 @@
 // Defines the functions and variables (excluding $rootScope) that
 // the recommendation page has available to it.
 
-app.controller('recommendationCtrl', function($scope, $http, $window, $modal, $rootScope) {
+app.controller('recommendationCtrl', function($scope, $http, $route, $modal, $rootScope) {
 
   const serverURL = "http://142.93.198.244:8080/";
 
@@ -27,7 +27,7 @@ app.controller('recommendationCtrl', function($scope, $http, $window, $modal, $r
     var res = $http.delete(serverURL + 'api/Recommendations/' + itemID);
     res.then(function(data, status, headers, config) {
       alert("Recommendation removed from the database.");
-      $window.location.reload();
+      $route.reload();
     }, function(data, status, headers, config) {
       alert( "failure message: " + JSON.stringify({data: data}));
     });

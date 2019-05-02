@@ -16,5 +16,48 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     .when("/recommendations", {
         templateUrl: 'websiteResources/htmls/recommendationManagement.html',
         controller: 'recommendationCtrl'
-    });
+    })
+    .otherwise({redirectTo: '/'});
+}]);
+app.run(['$rootScope', '$location', 'loginService', function($rootScope, $location, loginService) {
+  $rootScope.$on("$routeChangeStart", function(event, next, current) {
+    if (next.templateUrl === "websiteResources/htmls/tipManagement.html") {
+      if(!loginService.getPermission('loggedIn')) {
+        $location.path('/');
+      }
+    }
+    if (next.templateUrl === "websiteResources/htmls/recommendationManagement.html") {
+        if(!loginService.getPermission('loggedIn')) {
+          $location.path('/');
+        }
+    }
+  });
+}]);
+
+app.directive('fileModel', ['$parse', function ($parse) {
+  return {
+     restrict: 'A',
+     link: function(scope, element, attrs) {
+        var model = $parse(attrs.fileModel);
+        var modelSetter = model.assign;
+        
+        element.bind('change', function() {
+           scope.$apply(function() {
+              modelSetter(scope, element[0].files[0]);
+           });
+        });
+     }
+  };
+}]);
+
+app.service('loginService', [function() {
+  var permissions = {
+    loggedIn: false
+  };
+  this.setPermission = function(permission, value) {
+    permissions[permission] = value;
+  }
+  this.getPermission = function(permission) {
+    return permissions[permission] || false;
+  }
 }]);

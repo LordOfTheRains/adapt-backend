@@ -20,7 +20,7 @@
       "required": true
     },
     "subtype": {
-      "type": "number"
+      "type": "string"
     },
     "applicableIncomes": {
       "type": [

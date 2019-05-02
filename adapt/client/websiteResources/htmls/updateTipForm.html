@@ -9,66 +9,55 @@
                     <div class="container">
                                 <form ng-submit="updateTip()" id = "updatetipform">
                                     <div class="form-group row">
-                                        <label>Tip Name</label>
-                                        <div class = 'input-group'>
+                                        <label>Tip Name (Required) </label>
+                                        <div class = 'input-group' >
                                             <input type = "text" class="form-control" placeholder = 'Enter tip name' ng-model = "updatedName" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label>Description</label>
-                                        <div class ='input-group'>
+                                        <label>Description (Required) </label>
+                                        <div class ='input-group' >
                                             <input type = "text"  class="form-control" placeholder = 'Enter tip description' ng-model = "updatedDescription" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label>Minimum Age (if applicable)</label>
+                                        <label>Type (Required) </label>
+                                        <div ng-dropdown-multiselect="2" options="tipTypeList" selected-model="updatedSelectedType" extra-settings="singleSelectDropDown" required></div>
+                                    </div>
+                                    <div class="form-group row" ng-show = "updatedSelectedType[0].id == buildingProfID">
+                                        <label>Subtype </label>
+                                        <div ng-dropdown-multiselect="4" options="tipSubtypeList" selected-model="updatedSelectedSubtype" extra-settings="singleSelectDropDown"></div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label>Minimum Age  (Required) </label>
                                         <div class ='input-group'>
-                                            <input type = "text"  class="form-control" placeholder = 'Enter minimum age' ng-model = "updatedMinAge">
+                                            <input type = "text"  class="form-control" placeholder = 'Enter minimum age' ng-model = "updatedMinAge" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label>Maximum Age (if applicable)</label>
+                                        <label>Maximum Age  (Required) </label>
                                         <div class ='input-group'>
-                                            <input type = "text"  class="form-control" placeholder = 'Enter maximum age' ng-model = "updatedMaxAge">
+                                            <input type = "text"  class="form-control" placeholder = 'Enter maximum age' ng-model = "updatedMaxAge" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label>Type</label>
-                                        <div class ='input-group'>
-                                            <input type = "text"  class="form-control" placeholder = 'Enter type' ng-model = "updatedType">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label>Subtype</label>
-                                        <div class ='input-group'>
-                                            <input type = "text"  class="form-control" placeholder = 'Enter subtype' ng-model = "updatedSubtype">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                            <label>Locations (if applicable) </label>
+                                            <label>Applicable Locations  (Required)  </label>
                                             <div ng-dropdown-multiselect="" options="stateList" selected-model="updatedSelectedStates" extra-settings="dropDownSettings"></div>
                                     </div>
                                     <div class="form-group row">
-                                            <label>Income Bracket (if applicable) </label>
+                                            <label>Applicable Income Brackets  (Required)  </label>
                                             <div ng-dropdown-multiselect="1" options="incomeBracketList" selected-model="updatedSelectedIncomeBrackets" extra-settings="dropDownSettings"></div>
                                     </div>
                                     <div class="form-group row">
-                                            <label>Gender (if applicable) </label>
-                                            <div ng-dropdown-multiselect="2" options="genderList" selected-model="updatedSelectedGenders" extra-settings="dropDownSettings"></div>
+                                            <label>Applicable Genders </label>
+                                            <div ng-dropdown-multiselect="0" options="genderList" selected-model="updatedSelectedGenders" extra-settings="dropDownSettings"></div>
                                     </div>
                                     <div class="form-group row">
-                                            <label>Website 1</label>
+                                            <label>Tip Website (Required)</label>
                                             <div class ='input-group'>
-                                                <input type = "text"  class="form-control" placeholder = 'Enter website name' ng-model = "updatedTipWebsites[0]['label']" required>
-                                                <input type = "text"  class="form-control" placeholder = 'Enter website url' ng-model = "updatedTipWebsites[0]['url']" required>
+                                                <input type = "text"  class="form-control" placeholder = 'Enter website url' ng-model = "updatedTipWebsite">
                                             </div>
-                                            <br>
-                    
-                                            <label>Website 2</label>
-                                            <div class ='input-group'>
-                                                <input type = "text"  class="form-control" placeholder = 'Enter website name' ng-model = "updatedTipWebsites[1]['label']">
-                                                <input type = "text"  class="form-control" placeholder = 'Enter website url' ng-model = "updatedTipWebsites[1]['url']">
-                                            </div>
+                                            
                                             <br>
                                     </div>
                                 </form>

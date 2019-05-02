@@ -2,8 +2,14 @@
 # Installs StrongLoop and Git
 FROM node:10.15.0-jessie
 
-RUN apt-get update && \
-      apt-get -y install sudo
+# the following commands are ran because jessie and weezy recently(april 2019) got removed from debian support
+# https://unix.stackexchange.com/questions/508724/failed-to-fetch-jessie-backports-repository
+RUN echo "deb [check-valid-until=no] http://cdn-fastly.deb.debian.org/debian jessie main" > /etc/apt/sources.list.d/jessie.list
+RUN echo "deb [check-valid-until=no] http://archive.debian.org/debian jessie-backports main" > /etc/apt/sources.list.d/jessie-backports.list
+RUN sed -i '/deb http:\/\/\(deb\|httpredir\).debian.org\/debian jessie.* main/d' /etc/apt/sources.list
+RUN apt-get -o Acquire::Check-Valid-Until=false update
+
+RUN apt-get -y install sudo
 
 
 RUN adduser --disabled-password --gecos '' docker

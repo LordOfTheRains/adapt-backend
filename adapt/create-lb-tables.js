@@ -2,7 +2,7 @@ var server = require('./server/server');
 var ds = server.dataSources.adaptDB;//change the last part to whatever datasource connector name you are using
 
 //turn this true if you want docker restart to remove the database schema and refill it with dummy data
-const shoudlResetDatabase = false;
+const shoudlResetDatabase = true;
 const shouldCreateDummyData = true;
 
 if (shoudlResetDatabase) {

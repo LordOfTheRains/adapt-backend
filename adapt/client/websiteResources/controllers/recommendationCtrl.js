@@ -3,7 +3,7 @@
 
 app.controller('recommendationCtrl', function($scope, $http, $window, $modal, $rootScope) {
 
-  const serverURL = "http://165.227.3.148:8080/";
+  const serverURL = "http://142.93.198.244:8080/";
 
   // Retrieves all currently existing recommendations that are inside the database
   $scope.pageInit = function() {

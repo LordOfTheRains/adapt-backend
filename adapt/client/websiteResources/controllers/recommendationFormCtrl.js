@@ -2,7 +2,7 @@
 // both the newRecommendationForm and updateRecommendationForm have available to them.
 
 app.controller('recommendationFormCtrl', function($scope, $http, $window, $modalInstance, recommendation) {
-    const serverURL = "http://165.227.3.148:8080/";
+    const serverURL = "http://142.93.198.244:8080/";
     $scope.newRecWebsites = new Array(2);
     $scope.selectedStates = []; 
     $scope.selectedIncomeBrackets = [];

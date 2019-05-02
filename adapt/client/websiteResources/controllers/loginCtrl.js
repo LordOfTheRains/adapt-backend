@@ -3,7 +3,7 @@
 
 app.controller('loginCtrl', function($scope, $http, $window, $rootScope) {
 
-  const serverURL = "http://165.227.3.148:8080/";
+  const serverURL = "http://142.93.198.244:8080/";
   $rootScope.isLoggedIn = false;
 
   // Logins the User (Partially Working)
